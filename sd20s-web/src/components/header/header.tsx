@@ -5,8 +5,8 @@ import account from '../../../public/account.svg';
 
 const Header = () => {
   return (
-    <div className='sticky top-0  mt-2 w-96 h-20 border-2 rounded-md border-black flex flex-col bg-black'>
-      <div className='flex gap-16 mt-5 items-center justify-center'>
+    <div className='fixed w-[393px] h-[115px] p-1 ml-1 -translate-y-24 -translate-x-3 mt-5 border-2 rounded-t-xl border-black flex flex-col bg-black items-center justify-center'>
+      <div className='flex gap-16 items-center'>
         <div>
           <Image 
           src={IG} 

@@ -9,9 +9,29 @@
 
 }
 
+/* for mobile dimension */
+body {
+  max-width: 390px; /* Set the max-width to the logical width of iPhone 16 */
+  min-width: 390px; /* Set the min-width to the logical width of iPhone 16 */
+  max-height: 844px; /* Set the max-height to the logical height of iPhone 16 */
+  min-height: 844px; /* Set the min-height to the logical height of iPhone 16 */
+  margin: 0 auto; /* Center the content */
+}
+
+@media (max-width: 390px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 844px) {
+  body {
+    font-size: 18px;
+  }
+}
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -23,18 +43,6 @@ body {
   color: white
 }
 
-/* for mobile dimension */
-@media (max-width: 398px) {
-  body {
-    font-size: 16px;
-  }
-}
-
-@media (max-height: 852px) {
-  body {
-    font-size: 18px;
-  }
-}
 
 .svg-white {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(105%) contrast(101%);

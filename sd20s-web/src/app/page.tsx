@@ -10,13 +10,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div> 
-        <Header />
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center text-2xl font-bold text-center sm:text-4xl">
+      <div className='justify-center items-center z-1'>
+        <div className='sticky top-0 z-50 '> 
+          <Header />
+        </div>
 
-      <div>
-        <Background />
+        <div className='flex-grow'>
+          <Background />
+        </div>
       </div>
 
     </div>
