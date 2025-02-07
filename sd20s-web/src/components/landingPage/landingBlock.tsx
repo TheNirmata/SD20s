@@ -29,7 +29,7 @@ const LandingBlock = () => {
         </div>
       </div>
 
-      <div className='realtive z-5 translate-y-8 -translate-x-7'>
+      <div className='z-5 translate-y-8 -translate-x-7'>
         <Image 
         alt='image-B'
         src={imageB}

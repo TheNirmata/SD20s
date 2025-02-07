@@ -5,7 +5,7 @@ import account from '../../../public/account.svg';
 
 const Header = () => {
   return (
-    <div className='w-[420px] h-[115px] -translate-y-80 -mt-20 rounded-t-xl border-black flex flex-col bg-black items-center justify-center'>
+    <div className='sticky top-0 w-full sm:w-[420px] h-[115px] flex flex-col rounded-t-xl border-black bg-black items-center justify-center'>
       <div className='flex gap-16 items-center'>
         <div>
           <Image 
