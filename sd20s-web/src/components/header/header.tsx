@@ -5,7 +5,7 @@ import account from '../../../public/account.svg';
 
 const Header = () => {
   return (
-    <div className='sticky top-0 w-full sm:w-[420px] h-[115px] flex flex-col rounded-t-xl border-black bg-black items-center justify-center'>
+    <div className='sticky top-0 w-full sm:w-[393px] h-[115px] flex flex-col rounded-t-xl border-black bg-black items-center justify-center'>
       <div className='flex gap-16 items-center'>
         <div>
           <Image 
@@ -14,7 +14,7 @@ const Header = () => {
           className='svg-white'
           />
         </div>
-        <div className='tracking-tighter'>
+        <div className='text-normal tracking-tighter'>
         <h1 className='text-xl'> NOTHING BUT US </h1>
         </div>
         <div>

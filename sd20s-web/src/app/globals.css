@@ -11,11 +11,12 @@
 
 /* for mobile dimension */
 body {
-  max-width: 390px; /* Set the max-width to the logical width of iPhone 16 */
-  min-width: 390px; /* Set the min-width to the logical width of iPhone 16 */
-  max-height: 844px; /* Set the max-height to the logical height of iPhone 16 */
-  min-height: 844px; /* Set the min-height to the logical height of iPhone 16 */
+  max-width: 393px; /* Set the max-width to the logical width of iPhone 16 */
+  min-width: 393px; /* Set the min-width to the logical width of iPhone 16 */
+  max-height: 852px; /* Set the max-height to the logical height of iPhone 16 */
+  min-height: 852px; /* Set the min-height to the logical height of iPhone 16 */
   margin: 0 auto; /* Center the content */
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
 }
 
 @media (max-width: 390px) {
@@ -31,7 +32,7 @@ body {
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #3b3a3a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
