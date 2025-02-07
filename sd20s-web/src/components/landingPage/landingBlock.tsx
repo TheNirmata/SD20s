@@ -9,11 +9,11 @@ import titleText from '../../../public/titleText.svg';
 const LandingBlock = () => {
   return (
     <div className='flex-col relative'>
-      <div className='translate-x-20 -translate-y-14'>
+      <div className='translate-x-10 -translate-y-12 justify-end'>
         <Image 
         alt='image-A'
         src={imageA}
-        className='w-[336px] h-[316px] object-cover'
+        className='w-[336px] h-[316px]'
         />
       </div>
       <div className='flex flex-row relative z-10'>
@@ -56,12 +56,12 @@ const LandingBlock = () => {
           </div>
         </div>
       </div>
-      <div className='flex flex-row absolute z-1'>
-        <div className='justify-center translate-x-2 translate-y-[350px]'>
+      <div className='flex-row relative z-1'>
+        <div className='justify-center'>
         <Image 
         alt='image-C'
         src={imageC}
-        className='w-[429.86px] h-[258.26px]'
+        className='w-[383.86px] h-[258.26px]'
         />
         </div>
       </div>

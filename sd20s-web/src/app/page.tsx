@@ -10,11 +10,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="w-full sm:w-[393px] min-h-screen flex flex-col">
       <div className="sticky top-0 z-50 w-full">
           <Header/>
       </div>
-      <div className="flex-grow flex flex-col items-center justify-center text-2xl font-bold text-center sm:text-4xl">
+      <div className=" flex flex-col items-center justify-center text-2xl font-bold text-center sm:text-4xl">
         {/* <div className='flex-grow z-1'> */}
           <LandingBlock />
         {/* </div> */}
