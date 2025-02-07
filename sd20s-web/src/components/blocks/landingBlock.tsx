@@ -5,10 +5,11 @@ import imageC from '../../../public/static-images/imageC.png';
 import digitalCam from '../../../public/static-images/digital-cam.png';
 import inDigitalCamImage from '../../../public/static-images/digitalCam-image.png';
 import titleText from '../../../public/titleText.svg';
+import titleText2 from '../../../public/titleText2.png';
 
 const LandingBlock = () => {
   return (
-    <div className='flex-col relative'>
+    <div className='overflow-x-hidden flex-col relative'>
       <div className='translate-x-10 -translate-y-12 justify-end'>
         <Image 
         alt='image-A'
@@ -37,12 +38,12 @@ const LandingBlock = () => {
       </div>
       {/* DIGITAL CAMERA */}
         <div className='flex flex-row -translate-y-96'>
-        <div className='absolute z-5 -right-7 translate-y-24 -translate-x-15'>
+        <div className='absolute z-5 translate-y-24 translate-x-14'>
           <div>
             <Image 
             alt='digital-cam'
             src={digitalCam}
-            className='w-[350.8px] h-[338.53px]'
+            className='w-[320.8px] h-[338.53px]'
             />
           </div>
         </div>
@@ -51,17 +52,25 @@ const LandingBlock = () => {
             <Image 
             alt='digital-cam-image'
             src={inDigitalCamImage}
-            className='w-[243.13px] h-[220.74px]'
+            className='w-[220.13px] h-[220.74px]'
             />
           </div>
         </div>
       </div>
-      <div className='flex-row relative z-1'>
+      {/* Last section of landingblock */}
+      <div className='flex-row relative z-1 -translate-y-44'>
+        <div className='translate-x-48 translate-y-5'>
+          <Image 
+            alt='text-2'
+          src={titleText2} 
+          className='w-[183.76px] h-[133.12px]'
+          />        
+        </div>
         <div className='justify-center'>
         <Image 
         alt='image-C'
         src={imageC}
-        className='w-[383.86px] h-[258.26px]'
+        className='w-[390.86px] h-[258.26px]'
         />
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 // import Playlist from '../components/music/playlist';
-import LandingBlock from '../components/landingPage/landingBlock';
+import LandingBlock from '../components/blocks/landingBlock';
 import Header from '../components/header/header';
 export default function Home() {
   useEffect(() => {
@@ -10,7 +10,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full sm:w-[393px] min-h-screen flex flex-col">
+    <div className="contianer min-h-screen flex flex-col">
       <div className="sticky top-0 z-50 w-full">
           <Header/>
       </div>

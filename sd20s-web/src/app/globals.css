@@ -11,21 +11,23 @@
 
 /* for mobile dimension */
 body {
-  max-width: 393px; /* Set the max-width to the logical width of iPhone 16 */
-  min-width: 393px; /* Set the min-width to the logical width of iPhone 16 */
-  max-height: 852px; /* Set the max-height to the logical height of iPhone 16 */
-  min-height: 852px; /* Set the min-height to the logical height of iPhone 16 */
-  margin: 0 auto; /* Center the content */
+  margin: 0;
   overflow-x: hidden; /* Hide the horizontal scrollbar */
 }
 
-@media (max-width: 390px) {
+.container {
+  max-width: 393px; /* Set the max-width to the logical width of iPhone 16 */
+  min-width: 393px; /* Set the min-width to the logical width of iPhone 16 */
+  margin: 0 auto; /* Center the container */
+}
+
+@media (max-width: 393px) {
   body {
     font-size: 16px;
   }
 }
 
-@media (max-height: 844px) {
+@media (max-height: 852px) {
   body {
     font-size: 18px;
   }
