@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import IG from '../../../public/igIcon.svg';
-import account from '../../../public/account.svg';
+import IG from '../../public/igIcon.svg';
+import account from '../../public/account.svg';
 
 const Header = () => {
   return (
