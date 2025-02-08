@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Image from 'next/image';
 import waitlistBlurText from '../../public/static-images/waitlist-block-images/waitlistBlur.png';

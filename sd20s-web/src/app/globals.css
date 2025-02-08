@@ -1,6 +1,10 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 
 :root {
@@ -13,6 +17,10 @@
 body {
   margin: 0;
   overflow-x: hidden; /* Hide the horizontal scrollbar */
+}
+
+.tight-spacing {
+  letter-spacing: -0.05em; /* Adjust the value as needed */
 }
 
 .container {

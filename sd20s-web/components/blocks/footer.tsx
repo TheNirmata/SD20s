@@ -1,3 +1,4 @@
+"use client"
 import IG from '../../public/static-images/footer-images/ig-icon.png';
 import youtube from '../../public/static-images/footer-images/youtube-icon.png';
 import facebook from '../../public/static-images/footer-images/facebook-icon.png';

@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import aboutUsGloble from '../../public/static-images/about-us-block-images/aboutUsGloble.png'
