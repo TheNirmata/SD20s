@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import imageA from '../../../public/static-images/imageA.png';
-import imageB from '../../../public/static-images/imageB.png';
-import imageC from '../../../public/static-images/imageC.png';
-import digitalCam from '../../../public/static-images/digital-cam.png';
-import inDigitalCamImage from '../../../public/static-images/digitalCam-image.png';
-import titleText from '../../../public/titleText.svg';
-import titleText2 from '../../../public/titleText2.png';
+import imageA from '../../../public/static-images/landing-block-images/imageA.png';
+import imageB from '../../../public/static-images/landing-block-images/imageB.png';
+import imageC from '../../../public/static-images/landing-block-images/imageC.png';
+import digitalCam from '../../../public/static-images/landing-block-images/digital-cam.png';
+import inDigitalCamImage from '../../../public/static-images/landing-block-images/digitalCam-image.png';
+import titleText from '../../../public/static-images/landing-block-images/titleText.svg';
+import titleText2 from '../../../public/static-images/landing-block-images/titleText2.png';
 
 const LandingBlock = () => {
   return (
-    <div className='overflow-x-hidden flex-col relative'>
+    <div className='overflow-x-hidden flex-col'>
       <div className='translate-x-10 -translate-y-12 justify-end'>
         <Image 
         alt='image-A'
@@ -58,7 +58,7 @@ const LandingBlock = () => {
         </div>
       </div>
       {/* Last section of landingblock */}
-      <div className='flex-row relative z-1 -translate-y-44'>
+      <div className='flex-row relative -translate-y-44'>
         <div className='translate-x-48 translate-y-5'>
           <Image 
             alt='text-2'

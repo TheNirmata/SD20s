@@ -4,6 +4,9 @@ import React, { useEffect } from 'react';
 // import Playlist from '../components/music/playlist';
 import LandingBlock from '../components/blocks/landingBlock';
 import Header from '../components/header/header';
+import WaitlistBlock from '../components/blocks/waitlistBlock';
+import AboutUs from '../components/blocks/aboutUs';
+import Footer from '../components/blocks/footer';
 export default function Home() {
   useEffect(() => {
     document.title = 'SD20s';
@@ -15,9 +18,10 @@ export default function Home() {
           <Header/>
       </div>
       <div className=" flex flex-col items-center justify-center text-2xl font-bold text-center sm:text-4xl">
-        {/* <div className='flex-grow z-1'> */}
           <LandingBlock />
-        {/* </div> */}
+          <WaitlistBlock />
+          <AboutUs />
+          <Footer />
       </div>
     </div>
   
