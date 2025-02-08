@@ -3,6 +3,8 @@ import Image from 'next/image';
 import IG from '../../public/igIcon.svg';
 import account from '../../public/account.svg';
 
+//import AccountDropDownMenu from './dropdown-menu/accountDropDownMenu';
+
 const Header = () => {
   return (
     <div className='sticky top-0 w-full h-[115px] flex flex-col rounded-t-xl border-black bg-black items-center justify-center'>
@@ -24,6 +26,9 @@ const Header = () => {
           className='w-30 h-31'
           />
         </div>
+
+        {/* <span> <AccountDropDownMenu /> </span> */}
+
       </div>
     </div>
   );
