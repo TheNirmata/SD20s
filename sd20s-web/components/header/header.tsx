@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import IG from '../../public/igIcon.svg';
 import account from '../../public/account.svg';
-import AccountDropDownMenu from './dropdown-menu/accountDropDownMenu';
+
+//import AccountDropDownMenu from './dropdown-menu/accountDropDownMenu';
 
 const Header = () => {
   return (
@@ -25,7 +26,9 @@ const Header = () => {
           className='w-30 h-31'
           />
         </div>
+
         {/* <span> <AccountDropDownMenu /> </span> */}
+
       </div>
     </div>
   );
