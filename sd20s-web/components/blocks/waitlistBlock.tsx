@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import waitlistBlurText from '../../../public/static-images/waitlist-block-images/waitlistBlur.png';
-import lineImage from '../../../public/static-images/waitlist-block-images/line.png';
+import waitlistBlurText from '../../public/static-images/waitlist-block-images/waitlistBlur.png';
+import lineImage from '../../public/static-images/waitlist-block-images/line.png';
 
 
 const WaitlistBlock = () => {

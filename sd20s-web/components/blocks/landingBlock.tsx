@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import imageA from '../../../public/static-images/landing-block-images/imageA.png';
-import imageB from '../../../public/static-images/landing-block-images/imageB.png';
-import imageC from '../../../public/static-images/landing-block-images/imageC.png';
-import digitalCam from '../../../public/static-images/landing-block-images/digital-cam.png';
-import inDigitalCamImage from '../../../public/static-images/landing-block-images/digitalCam-image.png';
-import titleText from '../../../public/static-images/landing-block-images/titleText.svg';
-import titleText2 from '../../../public/static-images/landing-block-images/titleText2.png';
+import imageA from '../../public/static-images/landing-block-images/imageA.png';
+import imageB from '../../public/static-images/landing-block-images/imageB.png'
+import imageC from '../../public/static-images/landing-block-images/imageC.png'
+import digitalCam from '../../public/static-images/landing-block-images/digital-cam.png'
+import inDigitalCamImage from '../../public/static-images/landing-block-images/digitalCam-image.png'
+import titleText from '../../public/static-images/landing-block-images/titleText.svg'
+import titleText2 from '../../public/static-images/landing-block-images/titleText2.png'
 
 const LandingBlock = () => {
   return (
