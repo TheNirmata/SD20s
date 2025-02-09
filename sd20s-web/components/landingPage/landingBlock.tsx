@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image';
 import imageA from '../../../public/static-images/imageA.png';
 import imageB from '../../../public/static-images/imageB.png';

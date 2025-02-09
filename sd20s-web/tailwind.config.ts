@@ -1,18 +1,29 @@
 import type { Config } from "tailwindcss";
 
-export default {
+
+const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
+    "../sd20s-web/components/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
+    "../sd20s-web/public/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
+    "../sd20s-web/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // background: "var(--background)",
+        // foreground: "var(--foreground)",
+      background: '#000000',
+      foreground: '#171717',
       },
+      spacing: {
+        '390': '390px',
+        '844': '844px',
+    },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;
+

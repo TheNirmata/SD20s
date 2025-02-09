@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Koulen } from "next/font/google";
 import "./globals.css";
+import { HeaderContextProvider } from '../../components/context/headerContext';
+import { FootContextProvider } from "../../components/context/footContext";
+import { ModalContextProvider } from "../../components/context/masterModalContext"
 
 
 
@@ -29,9 +32,14 @@ export default function RootLayout({
       </head>
       <body
         className={`${koulen.variable} ${koulen.variable} antialiased`}
-      >
-        {children}
-        
+        >
+        <ModalContextProvider>
+        <HeaderContextProvider>
+        <FootContextProvider>
+            {children}
+          </FootContextProvider>
+        </HeaderContextProvider>
+        </ModalContextProvider>
       </body>
     </html>
   );
