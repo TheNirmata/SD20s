@@ -78,7 +78,7 @@ body {
   padding: 20px;
   width: 298px;
   min-height: 500px;
-  /* height :auto; Allow the height to adjust based on content */
+  height:auto;/* Allow the height to adjust based on content */
   max-height: 90vh; /* Ensure the modal doesn't exceed the viewport height */
   overflow-y: auto; /* Add scroll if content exceeds max-height */
   overflow-x: hidden; /* Hide the horizontal scrollbar */
@@ -101,4 +101,12 @@ body {
 .modal-overlay.active .modal-content {
   transform: scale(1);
   opacity: 1;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 5px;
+  right: 2px;
+  cursor: pointer;
+  color: #606060;
 }

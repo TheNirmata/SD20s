@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
 import { useModalContext } from '../context/masterModalContext';
+
 import NewMemberModal from './newMemberModal';
 import ExistingMemberModal from './existingMemberModal';
 
@@ -15,7 +16,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [showForm, setShowForm] = useState(false);
   const [isNewMember, setIsNewMember] = useState(false);
-  const { ModalTemplate, setCurrentContent } = useModalContext(); 
+  const { ModalTemplate, setCurrentContent, closeModal } = useModalContext(); 
  
   useEffect(() => {
     const handleClickOutsideModal = (event: MouseEvent) => {
@@ -56,6 +57,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
     <>
     {(show) && (
       <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col items-center top-0`}>
+
       <ModalTemplate>
         <div className=' text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
            {!showForm ? (

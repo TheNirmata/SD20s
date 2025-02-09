@@ -26,11 +26,10 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
 
   const ModalTemplate: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
-      <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col justify-center items-center top-0`}>
+      <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col justify-center items-center top-0 h-auto`}>
         {/*  bg-[#1A1A1A] w-[298px] h-[474px] rounded-lg border-2 border-[#606060] */}
-        <div className=' justify-center items-center modal-container'> 
-          <div className='-translate-y-10 flex flex-col'>
-            <div className='relative flex flex-row ml-2 translate-x-60 translate-y-1'>
+        <div className='flex flex-col modal-container'> 
+            <div className='modal-close-button'>
               <button onClick={closeModal}>
                 <Image 
                   src={xIcon}
@@ -39,7 +38,7 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
                   />
               </button>
             </div>
-            <div className='items-center -translate-y-2'>
+            <div className='items-center'>
                 <div className='pt-5'>
                   <Image 
                     src={waitlistHeading}
@@ -47,12 +46,11 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
                     className='w-[380px] h-[100px]'
                     />
                 </div>
-                  <div className='text-[20px] uppercase text-center leading-tight translate-y-5'>
+                  <div className='mt-5 text-[20px] uppercase text-center leading-tight'>
                     <h2>your next event awaits...</h2>
                 </div>
             </div>
-          </div>
-
+      
           {children}
         
           <div className='m-5 items-center translate-y-10'>
