@@ -19,9 +19,6 @@ body {
   overflow-x: hidden; /* Hide the horizontal scrollbar */
 }
 
-.tight-spacing {
-  letter-spacing: -0.05em; /* Adjust the value as needed */
-}
 
 .container {
   max-width: 393px; /* Set the max-width to the logical width of iPhone 16 */
@@ -57,4 +54,29 @@ body {
 
 .svg-white {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(105%) contrast(101%);
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+  opacity: 1;
 }

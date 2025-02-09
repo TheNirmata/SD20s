@@ -6,6 +6,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
     "../sd20s-web/components/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
     "../sd20s-web/public/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
+    "../sd20s-web/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
   ],
   theme: {
     extend: {
