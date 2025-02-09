@@ -13,19 +13,16 @@ interface LoginModalProps {
 
 const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [next, setNext] = useState(false);
-  const [showNewMemberForm, setShowNewMemberForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [isNewMember, setIsNewMember] = useState(false);
   const { ModalTemplate, setCurrentContent } = useModalContext(); 
  
   useEffect(() => {
-    if (typeof window !== undefined) {
-      const handleClickOutsideModal = (event: MouseEvent) => {
-        if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-          setNext(true);
-          // closeModal();
+    const handleClickOutsideModal = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setShow(false);
       }
-    }
+      };
       if (show) {
         document.body.style.overflow = 'hidden';
         document.addEventListener('mousedown', handleClickOutsideModal);
@@ -33,19 +30,22 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
         document.body.style.overflow = 'unset';
         document.removeEventListener('mousedown', handleClickOutsideModal);
       }
-    };
-  }, [show, next]);
+      return () => {
+        document.body.style.overflow = 'unset';
+        document.removeEventListener('mousedown', handleClickOutsideModal);
+      };
+  }, [show, setShow]);
 
   const handleNewMember = () => {
     setIsNewMember(true);
-    setShowNewMemberForm(true);
+    setShowForm(true);
     setCurrentContent(<NewMemberModal />);
     console.log('New member clicked');
   };
 
   const handleExistingMember = () => {
     setIsNewMember(false);
-    setShowNewMemberForm(false);
+    setShowForm(true);
     setCurrentContent(<ExistingMemberModal />);
     console.log('existing member clicked');
   };
@@ -57,10 +57,10 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
     {(show) && (
       <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col items-center top-0`}>
       <ModalTemplate>
-        <div className=' translate-x-2 justify-center items-center text-[15px] text-transform: uppercase tight-spacing tracking-tighter'>
-           {!showNewMemberForm ? (
+        <div className=' text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
+           {!showForm ? (
             <>
-             <div className='p-3 translate-y-20'>
+             <div className='p-3 -translate-x-2 translate-y-5 justify-center items-center'>
              <button 
                className='bg-white border-white rounded-md text-black w-[242px] h-[47px]' 
                onClick={handleNewMember}
@@ -68,7 +68,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
                <span className='text-transform: uppercase tight-spacing tracking-tighter'>New Member</span>
              </button>
            </div>
-         <div className='p-3 translate-y-20'>
+         <div className='p-3 -translate-x-2 translate-y-5'>
          <button 
            className='bg-white border-white rounded-md text-black w-[242px] h-[47px]' 
            onClick={handleExistingMember}
@@ -78,6 +78,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
            </div>
            </>
            ) : (
+            // isNewMember && currentContent
             isNewMember ? <NewMemberModal /> : <ExistingMemberModal />
            )}
 

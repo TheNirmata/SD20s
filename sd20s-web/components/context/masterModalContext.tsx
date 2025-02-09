@@ -27,9 +27,10 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
   const ModalTemplate: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
       <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col justify-center items-center top-0`}>
-        <div className='items-center justify-center bg-[#1A1A1A] w-[298px] h-[474px] rounded-lg border-2 border-[#606060]'>
-          <div className='flex flex-col'>
-            <div className='relative flex flex-row ml-2 translate-x-64 translate-y-4'>
+        {/*  bg-[#1A1A1A] w-[298px] h-[474px] rounded-lg border-2 border-[#606060] */}
+        <div className=' justify-center items-center modal-container'> 
+          <div className='-translate-y-10 flex flex-col'>
+            <div className='relative flex flex-row ml-2 translate-x-60 translate-y-1'>
               <button onClick={closeModal}>
                 <Image 
                   src={xIcon}
@@ -38,24 +39,23 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
                   />
               </button>
             </div>
-            <div className='items-center'>
-                <div className='translate-y-10 pt-5'>
+            <div className='items-center -translate-y-2'>
+                <div className='pt-5'>
                   <Image 
                     src={waitlistHeading}
                     alt='waitlist-heading'
                     className='w-[380px] h-[100px]'
                     />
                 </div>
-                  <div className='font-transform: uppercase text-[15px] text-center leading-tight translate-y-10'>
+                  <div className='text-[20px] uppercase text-center leading-tight translate-y-5'>
                     <h2>your next event awaits...</h2>
                 </div>
             </div>
           </div>
 
           {children}
-          
-
-          <div className='translate-x-32 translate-y-20'>
+        
+          <div className='m-5 items-center translate-y-10'>
             <Image
               src={softStar}
               alt='soft-star'
@@ -68,7 +68,7 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
   };
 
   return (
-    <MasterModalContext.Provider value={{ ModalTemplate, setCurrentContent, closeModal, showModal, show }}>
+    <MasterModalContext.Provider value={{ ModalTemplate, currentContent, setCurrentContent, closeModal, showModal, show }}>
       {children}
     </MasterModalContext.Provider>
   );

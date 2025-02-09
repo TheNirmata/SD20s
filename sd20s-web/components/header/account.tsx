@@ -8,10 +8,9 @@ import AccountModal from '../modal/accountModal';
 
 const Account = () => {
   const { show, showModal } = useModalContext();
-  const handleClick = () => {
-    showModal();
-    console.log('account button clicked');
-  };
+  const [newMember, setNewMember] = useState(false);
+
+  const handleClick = () => showModal();
 
 
   return (
