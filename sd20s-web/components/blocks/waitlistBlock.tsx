@@ -24,7 +24,7 @@ const WaitlistBlock = () => {
       </div>
       <div>
         <button className='bg-white text-black border-1 border-white rounded-md w-[242px] h-[47px] translate-y-12'>
-          <text className='text-3xl text-center tracking-tight leading-height'>SIGN UP</text>
+          <span className='text-3xl text-center tracking-tight leading-height'>SIGN UP</span>
         </button>
       </div>
       <div className='translate-y-24'>

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@heroui/react";
 import account from '../../../public/account.svg';
-import LoginModal from '../../modal/loginModal';
+import LoginModal from '../../modal/accountModal';
 
 
 const AccountDropDownMenu = () => {

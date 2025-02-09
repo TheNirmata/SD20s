@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import React, { useContext, createContext } from 'react';
 import Header from '../header/header';
 
+
 const HeaderContext = createContext({});
 export const useHeaderContext = () => useContext(HeaderContext);
 

@@ -3,7 +3,7 @@ import { Koulen } from "next/font/google";
 import "./globals.css";
 import { HeaderContextProvider } from '../../components/context/headerContext';
 import { FootContextProvider } from "../../components/context/footContext";
-import { ModalContextProvider } from "../../components/context/modalContext";
+import { ModalContextProvider } from "../../components/context/masterModalContext"
 
 
 const koulen = Koulen({
@@ -32,11 +32,11 @@ export default function RootLayout({
         className={`${koulen.variable} ${koulen.variable} antialiased`}
         >
         <ModalContextProvider>
-          <HeaderContextProvider>
-            <FootContextProvider>
-              {children}
-            </FootContextProvider>
-          </HeaderContextProvider>
+        <HeaderContextProvider>
+        <FootContextProvider>
+            {children}
+          </FootContextProvider>
+        </HeaderContextProvider>
         </ModalContextProvider>
       </body>
     </html>

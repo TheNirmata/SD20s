@@ -1,15 +1,18 @@
 "use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
-import account from '../../public/account.svg';
 import IG from '../../public/igIcon.svg';
-import LoginModal from '../modal/loginModal';
-import { useModalContext } from '../context/modalContext';
+import Account from './account';
 
-// import AccountDropDownMenu from './dropdown-menu/accountDropDownMenu';
 
-const Header = () => {
-  const {  show, close, open, openModal } = useModalContext();
+const Header = () => {  
+  const [newMember, setNewMember] = useState(false);
+
+  // const openModal = () => {
+  //   setOpen(!open);
+  //   console.log('account button clicked')
+  // };
+
 
   return (
       <div  className='flex flex-row sticky top-0 w-full h-[115px] justify-center items-center rounded-t-xl bg-black space-x-10'>
@@ -23,22 +26,11 @@ const Header = () => {
         <div className='justify-center items-center text-center'>
           <h1 className='text-[18px] tight-spacing font-bold'> NOTHING BUT US </h1>
         </div>
-        <div className='p-5'> 
-          <button onClick={openModal} >
-                <Image 
-                  src={account}
-                  alt='account-icon'
-                  className='w-[30px] h-[30px]'
-                />
-                {open && (
-                  <div className={`modal-overlay ${!close && show ? 'active' : ''}`}>
-                    <LoginModal show={open} setShow={openModal}/>
-                  </div>
-                )}
-            </button>
-        </div>
+        <Account />
       </div>
   );
 };
 
-export default Header; 
+export default Header;
+
+

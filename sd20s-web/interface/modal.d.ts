@@ -1,14 +1,11 @@
 export default interface ModalContextProps {
   show: boolean;
   setShow: (show: boolean) => void;
-  close: boolean;
-  open: boolean;
-  setClose: (close: boolean) => void;
-  setOpen: (open: boolean) => void;
+  showModal: () => void;
   closeModal: () => void;
-  openModal: () => void;
-  handleCloseModal: () => void;
   ModalTemplate: React.FC<{ children: ReactNode }>;
+  setCurrentContent: (content: ReactNode) => void;
+
 }
 
 type modal = {
