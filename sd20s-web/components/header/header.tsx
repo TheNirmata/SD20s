@@ -4,8 +4,9 @@ import Image from 'next/image';
 import IG from '../../public/igIcon.svg';
 import Account from './account';
 
+//import AccountDropDownMenu from './dropdown-menu/accountDropDownMenu';
 
-const Header = () => {  
+const Header = () => {
   return (
       <div  className='flex flex-row sticky top-0 w-full h-[115px] justify-center items-center rounded-t-xl bg-black space-x-10'>
         <div className='p-5'>
