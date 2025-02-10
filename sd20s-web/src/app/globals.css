@@ -68,29 +68,13 @@ body {
   direction: flex;
   flex-direction: row;
   border-radius: 20px;
-  background-color: black;
-  z-index: 50;
+  background-color: rgb(0, 0, 0);
+  z-index: 2000;
   justify-content: center;
   align-items: center;
   padding: 0px, 20px;
 
 }
-/* .modal-overlay {
-  position: fixed;
-  top: 115px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #000000;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-} */
 .modal-overlay {
   position: fixed;
   top: 115px;
@@ -102,10 +86,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 3000 !important;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out !important;
 }
 
 .modal-container {
@@ -116,7 +100,7 @@ body {
   width: 298px;
   min-height: 530px;
   height:auto;/* Allow the height to adjust based on content */
-  max-height: 50vh; /* Ensure the modal doesn't exceed the viewport height */
+  max-height: 80vh; /* Ensure the modal doesn't exceed the viewport height */
   overflow-y: auto; /* Add scroll if content exceeds max-height */
   overflow-x: hidden; /* Hide the horizontal scrollbar */
   display: flex;
@@ -124,7 +108,7 @@ body {
   /* justify-content: center; */
   align-items: center;
   z-index: 10;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out !important;
 }
 
 .modal-overlay.active {
@@ -135,6 +119,7 @@ body {
 .modal-overlay.inactive {
   opacity: 0;
   visibility:hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
  }
 
 .modal-close-button {

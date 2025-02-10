@@ -53,8 +53,11 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
   };
 
   const handleModalClose = () => {
-    setShow(false);
+    // setShow(false);
+    setTimeout(() => setShow(false), 300); // Delay to match transition time
     setShowForm(false);
+ 
+
   };
 
 
