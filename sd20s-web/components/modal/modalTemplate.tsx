@@ -10,7 +10,7 @@ import softStar from '../../public/static-images/modal/soft-star.png';
 
   
 //@ts-expect-error - ignore
-const ModalTemplate = ({ show, close, children }: ModalTemplateProps) => { //{sh
+const ModalTemplate = ({ show, close, children }: ModalTemplateProps) => { 
   return (
     <>
       {show && (
@@ -47,7 +47,7 @@ const ModalTemplate = ({ show, close, children }: ModalTemplateProps) => { //{sh
           </div>
         </div>
       </div>
-      )}
+    )}
     </>
   );
 };

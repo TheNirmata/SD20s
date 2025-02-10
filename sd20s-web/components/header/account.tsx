@@ -9,9 +9,7 @@ const Account = () => {
   const handleClick = () => {
     setTimeout(() => setShow(true), 10);
   };
-  const showModal = () => {
-    setShow(true);
-  };
+
   return (
     <>
     <div className='p-5'> 
@@ -24,7 +22,7 @@ const Account = () => {
       </button>
     </div>
     {/* @ts-expect-error -ignore */}
-    {(show) &&  <AccountModal show={show} setShow={showModal} />}
+    {(show) &&  <AccountModal show={show} setShow={setShow} />}
     </>
   );
 };

@@ -22,6 +22,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
     const handleClickOutsideModal = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         setShow(false);
+        setShowForm(false);
       }
       };
       if (show) {
@@ -52,8 +53,8 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
   };
 
   const handleModalClose = () => {
-    setShowForm(false);
     setShow(false);
+    setShowForm(false);
   };
 
 
