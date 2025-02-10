@@ -1,16 +1,37 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import  ModalTemplateProps  from '../../interface/modal';
-// import  ModalContextProps  from '../../interface/modal';
 import Image from 'next/image';
 import xIcon from '../../public/static-images/modal/x-icon.png';
 import waitlistHeading from '../../public/static-images/modal/waitlistHeading.png';
 import softStar from '../../public/static-images/modal/soft-star.png';
-// import { useModalContext } from '../context/masterModalContext';
+
 
   
 //@ts-expect-error - ignore
-const ModalTemplate = ({ show, close, children }: ModalTemplateProps) => { 
+const ModalTemplate = ({ show, setShow, close, children }: ModalTemplateProps) => { 
+    const modalRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleClickOutsideModal = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setTimeout(() => setShow(false), 300);
+      }
+      };
+      if (show) {
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('mousedown', handleClickOutsideModal);
+      } else {
+        document.body.style.overflow = 'unset';
+        document.removeEventListener('mousedown', handleClickOutsideModal);
+      }
+      return () => {
+        document.body.style.overflow = 'unset';
+        document.removeEventListener('mousedown', handleClickOutsideModal);
+      };
+  }, [show, setShow]);
+  
+  if (!show) return null;
   return (
     <>
       {show && (

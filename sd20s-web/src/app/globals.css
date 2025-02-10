@@ -86,7 +86,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -1 !important;
+  z-index: 3000 !important;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out !important;
@@ -119,6 +119,7 @@ body {
 .modal-overlay.inactive {
   opacity: 0;
   visibility:hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
  }
 
 .modal-close-button {
