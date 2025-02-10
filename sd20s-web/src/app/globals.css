@@ -68,7 +68,8 @@ body {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  /* visibility: hidden; */
+  visibility: hidden;
+  background: rgba(0, 0.5, 0, 0.5);
   z-index:1000;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
@@ -85,7 +86,7 @@ body {
   overflow-x: hidden; /* Hide the horizontal scrollbar */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -106,8 +107,7 @@ body {
 
 .modal-close-button {
   position: absolute;
-  top: 5px;
-  right: 2px;
+
   cursor: pointer;
   color: #606060;
 }

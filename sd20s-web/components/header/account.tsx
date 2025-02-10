@@ -20,7 +20,7 @@ const Account = () => {
         <Image 
           src={account}
           alt='account-icon'
-          className='w-[30px] h-[30px]'
+          className='w-[32px] h-[32px]'
           />
       </button>
     </div>

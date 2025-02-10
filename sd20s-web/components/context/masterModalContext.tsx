@@ -26,10 +26,11 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
 
   const ModalTemplate: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
-      <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col justify-center items-center top-0 h-auto`}>
+      <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col justify-center items-center top-0 h-auto z-1000`}>
         {/*  bg-[#1A1A1A] w-[298px] h-[474px] rounded-lg border-2 border-[#606060] */}
         <div className='flex flex-col modal-container'> 
-            <div className='modal-close-button'>
+          {/* translate-x-20 justify-end items-end color-[#606060] */}
+            <div className = ' modal-close-button  translate-x-32'>
               <button onClick={closeModal}>
                 <Image 
                   src={xIcon}
