@@ -1,16 +1,16 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import NewMemberLogin from './newMemberLogin';
-import { useModalContext } from '../../../components/context/masterModalContext';
 // import Image from 'next/image';
 
-const NewMemberModal = () => {
-  const { show } = useModalContext();
-  const [goToNewMemberLogin, setGoToNewMemberLogin] = React.useState(false);
+const NewMemberModal = ({ show, setShow }) => {
+  const [goToNewMemberLogin, setGoToNewMemberLogin] = useState(false);
   
   const handleNewMemberLogin = () => {
+    setShow(true);
     setGoToNewMemberLogin(true);
   };
+
   return (
   <>
     {show && (

@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
-import { useModalContext } from '../context/masterModalContext';
-
+// import { useModalContext } from '../context/masterModalContext';
+import ModalTemplate from './modalTemplate';
 import NewMemberModal from './new-member/newMemberModal';
 import ExistingMemberModal from './existingMemberModal';
 
@@ -16,7 +16,6 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [showForm, setShowForm] = useState(false);
   const [isNewMember, setIsNewMember] = useState(false);
-  const { ModalTemplate, setCurrentContent, closeModal } = useModalContext(); 
 
  
   useEffect(() => {
@@ -40,26 +39,28 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
 
   const handleNewMember = () => {
     setIsNewMember(true);
-    setShowForm(true);
-    setCurrentContent(<NewMemberModal />);
+      setShowForm(true);
+    // setCurrentContent(<NewMemberModal />);
     console.log('New member clicked');
   };
 
   const handleExistingMember = () => {
     setIsNewMember(false);
     setShowForm(true);
-    setCurrentContent(<ExistingMemberModal />);
+    // setCurrentContent(<ExistingMemberModal />);
     console.log('existing member clicked');
   };
 
+  const handleModalClose = () => {
+    setShowForm(false);
+    setShow(false);
+  };
 
 
   return (
     <>
-    {(show) && (
-      // <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col items-center top-0`}>
-
-      <ModalTemplate>
+    {show && (
+      <ModalTemplate show={show} close={handleModalClose}>
         <div className='sm:h-[467px] text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
            {!showForm ? (
             <>
@@ -82,12 +83,10 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
            </>
            ) : (
             // isNewMember && currentContent
-            isNewMember ? <NewMemberModal /> : <ExistingMemberModal />
+            isNewMember ? <NewMemberModal show={show} setShow={setShow}/> : <ExistingMemberModal />
            )}
-
         </div>
     </ModalTemplate>
-    // </div>
     )}
   </>
   );
