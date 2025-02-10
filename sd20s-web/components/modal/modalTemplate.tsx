@@ -15,7 +15,7 @@ const ModalTemplate = ({ show, close, children }: ModalTemplateProps) => {
     <>
       {show && (
         <div className={`modal-overlay ${show ? 'active' : 'inactive'}`}>
-        <div className='flex flex-col modal-container'> 
+        <div className='flex flex-col modal-container -translate-y-13'> 
             <div className = 'modal-close-button translate-x-32'>
               <button onClick={close}>
                 <Image 
