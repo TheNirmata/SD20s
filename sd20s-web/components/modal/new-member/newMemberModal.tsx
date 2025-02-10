@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import NewMemberLogin from './newMemberLogin';
 import type { NewMemberModalProps } from '../../../interface/modal';
+import NewMemberWaitlist from './newMemberWaitlist.';
 // import Image from 'next/image';
 
 const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
@@ -46,7 +46,7 @@ const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
         </div>
         
       ): (
-        <NewMemberLogin />
+        <NewMemberWaitlist />
       )}
       </div>
     )}
