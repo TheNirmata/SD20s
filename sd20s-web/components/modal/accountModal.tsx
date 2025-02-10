@@ -84,7 +84,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
            </>
            ) : (
             // isNewMember && currentContent
-            isNewMember ? <NewMemberModal show={show} setShow={setShow}/> : <ExistingMemberModal />
+            isNewMember ? <NewMemberModal show={show} setShow={setShow} isGoingToNewMemberLogin={true}/> : <ExistingMemberModal />
            )}
         </div>
     </ModalTemplate>

@@ -1,10 +1,11 @@
 "use client"
 import React, { useState } from 'react';
 import NewMemberLogin from './newMemberLogin';
+import type { NewMemberModalProps } from '../../../interface/modal';
 // import Image from 'next/image';
 
-const NewMemberModal = ({ show, setShow }) => {
-  const [goToNewMemberLogin, setGoToNewMemberLogin] = useState(false);
+const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
+  const [goToNewMemberLogin, setGoToNewMemberLogin] = useState<boolean>(false);
   
   const handleNewMemberLogin = () => {
     setShow(true);

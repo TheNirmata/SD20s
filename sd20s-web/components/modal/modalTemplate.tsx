@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import  ModalTemplateProps  from '../../interface/modal';
 // import  ModalContextProps  from '../../interface/modal';
 import Image from 'next/image';
@@ -30,11 +30,11 @@ const ModalTemplate = ({ show, close, children }: ModalTemplateProps) => {
                   <Image 
                     src={waitlistHeading}
                     alt='waitlist-heading'
-                    className='w-[380px] h-[100px]'
+                    className='w-[370px] h-[100px]'
                     />
                 </div>
-                  <div className='mt-5 text-[20px] uppercase text-center leading-tight'>
-                    <h2>your next event awaits...</h2>
+                  <div className='justify-center items-center mt-5 text-[20px] uppercase text-center leading-tight'>
+                    <h3>your next event awaits...</h3>
                 </div>
             </div>
           {children}

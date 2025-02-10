@@ -22,6 +22,36 @@ interface ModalTemplateProps {
   setCurrentContent: (content: ReactNode) => void,
 }
 
+type AccountModalProps = {
+  show: boolean;
+  setShow: (show: boolean) => void;
+};
+
+type NewMemberModalProps = {
+  show: boolean;
+  setShow: (show: boolean) => void;
+  isGoingToNewMemberLogin: boolean;
+};
+
+type ExistingMemberModalProps = {
+  show: boolean;
+  setShow: (show: boolean) => void;
+};
+
+
+
+type NewMemberProps = {
+  email: string;
+  phone: string;
+  code: string;
+};
+
+type ExistingMemberProps = {
+  email: string;
+  phone: string;
+  code: string;
+};
+
 type modal = {
   show: boolean;
   setShow: (show: boolean) => void;
@@ -31,4 +61,4 @@ type modal = {
 }
 
 
-export { modal, ModalTemplateProps };
+export { modal, ModalTemplateProps, NewMemberProps, ExistingMemberProps, AccountModalProps, NewMemberModalProps, ExistingMemberModalProps, ModalContextProps };
