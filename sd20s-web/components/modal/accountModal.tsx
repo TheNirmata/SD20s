@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useModalContext } from '../context/masterModalContext';
 
-import NewMemberModal from './newMemberModal';
+import NewMemberModal from './new-member/newMemberModal';
 import ExistingMemberModal from './existingMemberModal';
 
 interface LoginModalProps {
@@ -17,6 +17,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
   const [showForm, setShowForm] = useState(false);
   const [isNewMember, setIsNewMember] = useState(false);
   const { ModalTemplate, setCurrentContent, closeModal } = useModalContext(); 
+
  
   useEffect(() => {
     const handleClickOutsideModal = (event: MouseEvent) => {
@@ -56,10 +57,10 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
   return (
     <>
     {(show) && (
-      <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col items-center top-0`}>
+      // <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col items-center top-0`}>
 
       <ModalTemplate>
-        <div className=' text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
+        <div className='sm:h-[467px] text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
            {!showForm ? (
             <>
              <div className='p-3 -translate-x-2 translate-y-5 justify-center items-center'>
@@ -86,7 +87,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
 
         </div>
     </ModalTemplate>
-    </div>
+    // </div>
     )}
   </>
   );

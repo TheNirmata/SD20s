@@ -24,12 +24,23 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
   const showModal = () => setShow(true);
   const closeModal = () => setShow(false);
 
+  // const openModalButton = document.querySelector('.modal-overlay.active');
+  // const closeModalButton = document.querySelector('.modal-overlay.inactive');
+  // const modalOverlay = document.querySelector('.modal-overlay');
+
+  // openModalButton?.addEventListener('click', () => {
+  //   modalOverlay?.classList.add('active');
+  // });
+
+  // closeModalButton?.addEventListener('click', () => {
+  //   modalOverlay?.classList.remove('active')
+  // });
+
   const ModalTemplate: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
-      <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col justify-center items-center top-0 h-auto z-1000`}>
-        {/*  bg-[#1A1A1A] w-[298px] h-[474px] rounded-lg border-2 border-[#606060] */}
+      <>
+      <div className={`modal-overlay ${show ? 'active' : 'inactive'} flex flex-col justify-center items-center`}>
         <div className='flex flex-col modal-container'> 
-          {/* translate-x-20 justify-end items-end color-[#606060] */}
             <div className = ' modal-close-button  translate-x-32'>
               <button onClick={closeModal}>
                 <Image 
@@ -54,7 +65,7 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
       
           {children}
         
-          <div className='m-5 items-center translate-y-10'>
+          <div className='soft-star-container'>
             <Image
               src={softStar}
               alt='soft-star'
@@ -63,6 +74,7 @@ export const ModalContextProvider: React.FC<{ children: ReactNode }> = ({ childr
           </div>
         </div>
       </div>
+      </>
     );
   };
 

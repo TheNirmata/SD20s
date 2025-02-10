@@ -13,9 +13,7 @@ export const HeaderContextProvider = ({ children }: { children: ReactNode }) => 
   
   return (
     <HeaderContext.Provider value={handleHeader}>
-      <div className="sticky top-0 z-50 w-full">
         <Header />
-      </div>
       {children}
     </HeaderContext.Provider>
   );

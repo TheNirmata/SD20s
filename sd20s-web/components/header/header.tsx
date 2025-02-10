@@ -8,7 +8,8 @@ import Account from './account';
 
 const Header = () => {
   return (
-      <div  className='flex flex-row sticky top-0 w-full h-[115px] justify-center items-center rounded-t-xl bg-black space-x-5'>
+    // 'flex flex-row sticky top-0 w-full h-[115px] justify-center items-center rounded-t-xl bg-black space-x-5'
+      <div  className='header flex flex-row'>
         <div className='p-5'>
             <Image
             src={IG} 

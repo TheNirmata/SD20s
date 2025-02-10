@@ -1,9 +1,8 @@
 "use client"
 import React from 'react';
-import { useModalContext } from '../context/masterModalContext';
+// import { useModalContext } from '../context/masterModalContext';
 
 const ExistingMemberModal = () => {
-  const { ModalTemplate } = useModalContext();
   return (
       <>
       <div className='justify-center items-center flex flex-col tight-spacing tracking-tighter '>
