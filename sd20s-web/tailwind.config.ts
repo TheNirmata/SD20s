@@ -23,6 +23,7 @@ const config: Config = {
     },
   },
   plugins: [],
+  animations: true 
 };
 
 export default config;

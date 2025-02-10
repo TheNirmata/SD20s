@@ -1,17 +1,14 @@
 "use client"
-import React, { useState } from 'react';
+import React  from 'react';
 import Image from 'next/image';
 import account from '../../public/account.svg';
-import { useModalContext } from '../context/masterModalContext';
 import AccountModal from '../modal/accountModal';
 
-
 const Account = () => {
-  const { show, showModal } = useModalContext();
-  const [newMember, setNewMember] = useState(false);
-
-  const handleClick = () => showModal();
-
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => {
+    setTimeout(() => setShow(true), 10);
+  };
 
   return (
     <>
@@ -20,11 +17,12 @@ const Account = () => {
         <Image 
           src={account}
           alt='account-icon'
-          className='w-[30px] h-[30px]'
+          className='w-[32px] h-[32px]'
           />
       </button>
     </div>
-    {(show) &&  <AccountModal show={show} setShow={showModal} />}
+    {/* @ts-expect-error -ignore */}
+    {(show) &&  <AccountModal show={show} setShow={setShow} />}
     </>
   );
 };
