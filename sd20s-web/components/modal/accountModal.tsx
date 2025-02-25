@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // import { useModalContext } from '../context/masterModalContext';
 import ModalTemplate from './modalTemplate';
 import NewMemberModal from './new-member/newMemberModal';
-import ExistingMemberModal from './existingMemberModal';
+import ExistingMemberModal from './returning-member/existingMemberModal'; 
 
 interface LoginModalProps {
   show: boolean;
@@ -56,8 +56,6 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow }) => {
     // setShow(false);
     setTimeout(() => setShow(false), 300); // Delay to match transition time
     setShowForm(false);
- 
-
   };
 
 

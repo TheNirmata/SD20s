@@ -1,11 +1,11 @@
 "use client"
-import React  from 'react';
+import React, { useState }  from 'react';
 import Image from 'next/image';
 import account from '../../public/account.svg';
 import AccountModal from '../modal/accountModal';
 
 const Account = () => {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
   const handleClick = () => {
     setTimeout(() => setShow(true), 10);
   };

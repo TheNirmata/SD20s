@@ -46,7 +46,7 @@ const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
         </div>
         
       ): (
-        <NewMemberWaitlist />
+        <NewMemberWaitlist show={show} setShow={setShow}/>
       )}
       </div>
     )}

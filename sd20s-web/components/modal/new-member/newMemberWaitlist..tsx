@@ -1,12 +1,30 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import softBlur from '../../../public/static-images/modal/soft-blur.png';
+import WaitlistConfirmation from './waitListConfirmation';
+// import { useRouter } from 'next/navigation';
 
-const NewMemberWaitlist = () => {
+const NewMemberWaitlist = ({ show, setShow }) => {
+  // const router = useRouter();
+  const handleConfirmation = () =>{
+    setShow(true);
+    console.log(`submit button clicked`);
+  };
+
+  const handleModalClose = () => {
+    // setShow(false);
+    setTimeout(() => setShow(false), 300); // Delay to match transition time
+  };
+
   return (
       <>
-      <div className='-tranlate-x-10 justify-center mt-5 mr-5'>
+      {show ? (
+        <WaitlistConfirmation show={show} close={handleModalClose}/>
+      ): (
+        <>
+        
+        <div className='-tranlate-x-10 justify-center mt-5 mr-5'>
         <h2>Join The Waitlist</h2>
       </div>
 
@@ -52,11 +70,14 @@ const NewMemberWaitlist = () => {
       <div className='translate-y-5 -translate-x-2 text-[18px] -mb-[165px]'>
         <button
           className="bg-white border-white rounded-md text-black w-[256px] h-[47px]"
+          onClick={handleConfirmation}
           >
-          <p className='uppercase text-[26px]'>submit</p>
+          <p className='uppercase text-[26px]' >submit</p>
         </button>
       </div>
       </div>
+        </>
+      )}
     </>
   )
 };

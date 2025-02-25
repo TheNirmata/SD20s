@@ -13,6 +13,7 @@ const ModalTemplate = ({ show, setShow, close, children }: ModalTemplateProps) =
     const modalRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    if (!show) return;
     const handleClickOutsideModal = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         setTimeout(() => setShow(false), 300);
@@ -31,7 +32,6 @@ const ModalTemplate = ({ show, setShow, close, children }: ModalTemplateProps) =
       };
   }, [show, setShow]);
   
-  if (!show) return null;
   return (
     <>
       {show && (

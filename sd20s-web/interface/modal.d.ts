@@ -30,7 +30,7 @@ type AccountModalProps = {
 type NewMemberModalProps = {
   show: boolean;
   setShow: (show: boolean) => void;
-  isGoingToNewMemberLogin: boolean;
+  isGoingToNewMemberLogin?: boolean;
 };
 
 type ExistingMemberModalProps = {
