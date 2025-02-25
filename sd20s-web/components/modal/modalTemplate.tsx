@@ -1,41 +1,50 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import  ModalTemplateProps  from '../../interface/modal';
 import Image from 'next/image';
 import xIcon from '../../public/static-images/modal/x-icon.png';
 import waitlistHeading from '../../public/static-images/modal/waitlistHeading.png';
 import softStar from '../../public/static-images/modal/soft-star.png';
-
-
+// import "./modal.module.css";
   
 //@ts-expect-error - ignore
+//props are coming from Account component
 const ModalTemplate = ({ show, setShow, close, children }: ModalTemplateProps) => { 
-    const modalRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    if (!show) return;
-    const handleClickOutsideModal = (event: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        setTimeout(() => setShow(false), 300);
-      }
-      };
-      if (show) {
-        document.body.style.overflow = 'hidden';
-        document.addEventListener('mousedown', handleClickOutsideModal);
-      } else {
-        document.body.style.overflow = 'unset';
-        document.removeEventListener('mousedown', handleClickOutsideModal);
-      }
-      return () => {
-        document.body.style.overflow = 'unset';
-        document.removeEventListener('mousedown', handleClickOutsideModal);
-      };
-  }, [show, setShow]);
+    // const modalRef = useRef<HTMLDivElement>(null);
+    // const [isVisible, setIsVisible] = useState(false);
+
+    // useEffect(() => {
+    //     if (show) {
+    //         setIsVisible(true);
+    //         document.body.style.overflow = 'hidden';
+    //     } else {
+    //         setTimeout(() => setIsVisible(false), 300); // Delay hiding for fade-out effect
+    //         document.body.style.overflow = 'unset';
+    //     }
+    // }, [show]);
+
+    // useEffect(() => {
+    //     const handleClickOutsideModal = (event: MouseEvent) => {
+    //         if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+    //             setShow(false);
+    //         }
+    //     };
+
+    //     if (show) {
+    //         document.addEventListener('mousedown', handleClickOutsideModal);
+    //     }
+
+    //     return () => {
+    //         document.removeEventListener('mousedown', handleClickOutsideModal);
+    //     };
+    // }, [show, setShow]);
+
+    // if (!isVisible) return null;
   
   return (
-    <>
-      {show && (
-        <div className={`modal-overlay ${show ? 'active' : 'inactive'}`}>
+    <div className={`modal-overlay ${show ? 'active' : ''}`}>
+    {/* <> */}
+      {/* {show && ( */}
         <div className='flex flex-col modal-container -translate-y-13'> 
             <div className = 'modal-close-button translate-x-32'>
               <button onClick={close}>
@@ -67,9 +76,9 @@ const ModalTemplate = ({ show, setShow, close, children }: ModalTemplateProps) =
               />
           </div>
         </div>
-      </div>
-    )}
-    </>
+    {/* )} */}
+    {/* </> */}
+    </div>
   );
 };
 
