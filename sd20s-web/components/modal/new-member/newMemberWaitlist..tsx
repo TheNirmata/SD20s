@@ -1,10 +1,17 @@
 "use client"
 import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import softBlur from '../../../public/static-images/modal/soft-blur.png';
 import WaitlistConfirmation from './waitListConfirmation';
 
-const NewMemberWaitlist = ({ show, setShow }) => {
+interface NewMemberWatilistProps { 
+  show: boolean, 
+  setShow: (show: boolean) => void
+}
+
+const NewMemberWaitlist: React.FC<NewMemberWatilistProps> = ({ show, setShow }) => {
   const [confirm, setConfirm] = useState(false);
 
   const handleConfirmation = () => {
@@ -12,13 +19,21 @@ const NewMemberWaitlist = ({ show, setShow }) => {
     setConfirm(true);
   };
   return (
-      <>
-      { show && ( 
+    <>
+      <AnimatePresence>
+        <motion.div
+        key="waitlist"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+    { show && ( 
           <>
           {!confirm ? (
             <>
             <div className='-tranlate-x-10 justify-center mt-5 mr-5'>
-            <h2>Join The Waitlist</h2>
+            <h2 className="justify-center items-center">Join The Waitlist</h2>
           </div>
 
           <div className='flex flex-col relative mt-5'>
@@ -35,7 +50,7 @@ const NewMemberWaitlist = ({ show, setShow }) => {
                 src={softBlur}
                 alt='soft-blur'
                 className='w-[260.42px] h-[165px]'
-              />
+                />
             </div>
           </div>
           <div className='-translate-y-40'>
@@ -51,14 +66,14 @@ const NewMemberWaitlist = ({ show, setShow }) => {
                 type='text'
                 placeholder='birthday'
                 className='text-center w-[260px] h-[35px] bg-[#272727] rounded-md' 
-              />
+                />
             </div>
             <div className='pt-2 -translate-x-2 text-[18px]'>
               <input
                 type='text'
                 placeholder='email'
                 className='text-center w-[260px] h-[35px] bg-[#272727] rounded-md' 
-              />
+                />
             </div>
           <div className='translate-y-5 -translate-x-2 text-[18px] -mb-[165px]'>
             <button
@@ -76,8 +91,9 @@ const NewMemberWaitlist = ({ show, setShow }) => {
 
           </> 
          
-      )}
-
+        )}
+        </motion.div>
+        </AnimatePresence>
     </>
   )
 };

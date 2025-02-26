@@ -7,7 +7,7 @@ import AccountModal from '../modal/accountModal';
 const Account = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => {
-    setTimeout(() => setShow(true), 300);
+    setShow(true)
   };
 
   return (
