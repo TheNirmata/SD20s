@@ -32,9 +32,9 @@ const NewMemberWaitlist: React.FC<NewMemberWatilistProps> = ({ show, setShow }) 
           <>
           {!confirm ? (
             <>
-            <div className='-tranlate-x-10 justify-center mt-5 mr-5'>
-            <h2 className="justify-center items-center">Join The Waitlist</h2>
-          </div>
+            <div className='-translate-10 justify-center mt-5 mr-5'>
+              <h2 className='translate-x-12'>Join The Waitlist</h2>
+            </div>
 
           <div className='flex flex-col relative mt-5'>
             <div className='justify-center items-center text-center custom-list li text-[13px] z-30 w-[202.42px] h-[89px]'>

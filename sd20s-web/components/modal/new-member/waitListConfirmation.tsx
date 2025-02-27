@@ -1,27 +1,15 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { motion } from 'motion/react';
 
 
 //@ts-expect-error - ignore
 const WaitlistConfirmation = ({ show, setShow }) => {
-  const [finish, setFinish] = useState(false);
-
-  useEffect(() => {
-    if (show) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [show]);
 
   const handleFinish = () => {
-    setFinish(true);
-    // setShow(false);
     setTimeout(() =>  {
       setShow(false);
-      setFinish(true);
     }, 300);
   };
 
@@ -29,8 +17,8 @@ const WaitlistConfirmation = ({ show, setShow }) => {
 
   return (
     <>
-      <AnimatePresence mode="wait" onExitComplete={() => console.log("Modal fully closed!")}>
-        {show && !finish && (
+      <AnimatePresence mode="wait" onExitComplete={() => console.log("Modal fully closed!")}>                  
+        {show && (
                 <motion.div
                     key="confimentation"
                     initial={{ opacity: 0 }}
