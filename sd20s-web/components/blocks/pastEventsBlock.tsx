@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Spacer, Card } from "@heroui/react";
 import PastEvent1 from "../../public/static-images/events-images/past-event1.png";
 import PaginationFeature from "../pagination/PaginationFeature";
-import { ChevronIcon } from "../pagination/PaginationFeature";
+import { Pagination } from "@heroui/react";
 
 const PastEventsBlock = () => {
   const events = [{
@@ -52,14 +52,15 @@ const PastEventsBlock = () => {
             className="border-spacing-x-2 m-5 max-w-[314px] w-[314px] h-[79.61px] bg-default-300" 
             >
             <div className="-z-20 -translate-x-30 justify-center items-center h-[10px] opacity-[0.5]">
-              <Image className="h-[40px] w-[800px]" src={PastEvent1} alt={`event-${i}`}  />
+              <Image className="h-[55px] w-[800px]" src={PastEvent1} alt={`event-${i}`}  />
             </div>
+            <Spacer y={3} />
             <div className="flex flex-row">
               <div>
               <h1 className="text-[32px] translate-y-3">{event.name}</h1>
               </div>
-              <Spacer x={16} />
-              <div className="flex flex-col justify-end items-end translate-x-24">
+              <Spacer x={36} />
+              <div className="flex flex-col justify-end items-end  translate-x-2 leading-none">
                 <div>{event.when}</div>
                 <div>{event.where}</div>
               </div>

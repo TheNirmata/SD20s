@@ -76,7 +76,7 @@ export default function PaginationFeature() {
         ref={ref}
         className={cn(
           className,
-          isActive && "text-white bg-gradient-to-br from-grey-500 to-white-500 font-bold",
+          isActive && "text-white bg-gradient-to-br from-grey-500 to-white-500 font-bold justify-between",
         )}
         onClick={() => setPage(value)}
       >

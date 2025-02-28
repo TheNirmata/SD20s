@@ -19,7 +19,7 @@ const SongRequestBlock = () => {
       </div>
       <Spacer y={12} />
       <div className="justify-center items-center translate-x-6">
-        <Image src={songBlockPlaceholder} alt="Song Block Placeholder" width={335} height={375} />
+        <Image src={songBlockPlaceholder} alt="Song Block Placeholder" width={335} height={430} />
       </div>
     </div>
     <Spacer y={36} />

@@ -24,7 +24,7 @@ const ContactUsBlock = () => {
     <div className="w-[200px] h-[47px]">
       <Image src={contactUsBlur} alt="contact-us-blur" />
     </div>
-    <Spacer y={20} />
+    <Spacer y={24} />
     <div className="w-[256px]">
     <Form
       className="w-full justify-center items-center"
