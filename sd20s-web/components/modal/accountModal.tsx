@@ -6,32 +6,17 @@ import NewMemberModal from './new-member/newMemberModal';
 import ExistingMemberModal from './returning-member/existingMemberModal';
 import LoadingScreen from './returning-member/loadingScreen';
 
-import {
-  // Modal,
-  // ModalContent,
-  // ModalHeader,
-  // ModalBody,
-  // ModalFooter,
-  // Button,
-  useDisclosure,
-  // Checkbox,
-  // Input,
-  // Link,
-} from "@heroui/react";
-
-
 interface LoginModalProps {
   show: boolean;
   setShow: (show: boolean) => void;
   isNewMember: boolean;
   setIsNewMember: (isNewMember: boolean) => void;
   isOpen: boolean;
-  onOpen: () => void;
+  onClose: () => void;
   onOpenChange: () => void;
 };
 
-const AccountModal: React.FC<LoginModalProps> = ({ show, setShow, isOpen, onOpen }) => {
-  const { onOpenChange, onClose } = useDisclosure();
+const AccountModal: React.FC<LoginModalProps> = ({ show, setShow, isOpen, onClose, onOpenChange }) => {
   const [showForm, setShowForm] = useState(false);
   const [isNewMember, setIsNewMember] = useState(false);
   const [showLoadingScreen, setShowLoadingScreen] = useState(false);
@@ -62,7 +47,6 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow, isOpen, onOpen
 
   const handleCloseModal = () => {
     setShow(false); // Trigger fade-out animation immediately
-    onOpenChange();
     onClose();
     setTimeout(() => {
       setShowForm(false);
@@ -75,16 +59,17 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow, isOpen, onOpen
       {showLoadingScreen && <LoadingScreen />}
       <AnimatePresence mode="wait" onExitComplete={() => console.log("Modal fully closed!")}>
         {show && (
-          <ModalTemplate show={isOpen} setShow={onOpen} close={handleCloseModal}>
+          <ModalTemplate show={show} setShow={setShow} isOpen={isOpen} onOpenChange={onOpenChange} close={handleCloseModal} className="z-[9999]">
             <div className='sm:h-[467px] text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
               <AnimatePresence mode="wait">
                 {!showForm ? (
                   <motion.div
                     key="buttons"
-                    initial={{ opacity: 0 }} 
+                    initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
+
                   >
                     <div className='p-3 -translate-x-2 translate-y-5 justify-center items-center'>
                       <button 
@@ -109,7 +94,7 @@ const AccountModal: React.FC<LoginModalProps> = ({ show, setShow, isOpen, onOpen
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3}}
                   >
                     {isNewMember ? (
                       <NewMemberModal show={show} setShow={setShow} isGoingToNewMemberLogin={true} />

@@ -19,13 +19,13 @@ const WaitlistConfirmation = ({ show, setShow }) => {
     <>
       {/* <AnimatePresence mode="wait" onExitComplete={() => console.log("Modal fully closed!")}>                   */}
         {show && (
-                // <motion.div
-                //     key="confimentation"
-                //     initial={{ opacity: 0 }}
-                //     animate={{ opacity: 1 }}
-                //     exit={{ opacity: 0 }}
-                //     transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
-                //   > 
+                <motion.div
+                    key="confimentation"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
+                  > 
                   <div>
                       <div className="flex flex-col mr-5 justify-center items-center text-center">
                         <div className="mt-5 w-[305px] h-[215px]">
@@ -48,7 +48,7 @@ const WaitlistConfirmation = ({ show, setShow }) => {
                         </div>
                       </div>
                     </div>
-              // </motion.div>
+            </motion.div>
             )}
       {/* </AnimatePresence> */}
     </>

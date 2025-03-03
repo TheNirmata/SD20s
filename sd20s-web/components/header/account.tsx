@@ -1,36 +1,58 @@
 "use client"
-import React, { useState, useEffect  }  from 'react';
-// import Image from 'next/image';
-// import account from '../../public/account.svg';
+import React, { useState, useEffect }  from 'react';
+import Image from 'next/image';
+import account from '../../public/account.svg';
 import AccountModal from '../modal/accountModal';
-
-import { useDisclosure } from "@heroui/react";
-
+import { useDisclosure, Button } from "@heroui/react";
 
 
 
 
 const Account = () => {
-  const {isOpen, onOpen } = useDisclosure();
   const [show, setShow] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleOpenAccountModal = () => {
+    onOpen();
+    setShow(true);
+    console.log('Account clicked', show, isOpen);
+  };
+
+  const handleCloseAccountModal = () => {
+    onClose();
+    setShow(false);
+    console.log('Account modal closed', show, isOpen);
+  };
 
   useEffect(() => {
-        onOpen();
-    setShow(true);
-  },[onOpen, show]);
+    console.log('isOpen state changed:', isOpen);
+  }, [isOpen]);
+
+  useEffect(() => {
+    console.log('show state changed:', show);
+  }, [show]);
 
 
   return (
     <>
-      {/* <Button onPress={handleClick}>
+    <div className='translate-x-10 justify-end items-end p-5'> 
+      <Button onPress={handleOpenAccountModal}>
         <Image 
           src={account}
           alt='account-icon'
-          className='w-[32px] h-[32px]'
+          className='max-w-[32px] max-h-[32px]'
           />
-      </Button> */}
-    {/* @ts-expect-error -ignore */}
-    {(show && isOpen) &&  <AccountModal show={show} setShow={setShow} isOpen={isOpen} onOpen={onOpen}/>}
+      </Button>
+    </div>
+    {show && isOpen  &&  (
+      <AccountModal 
+        show={show} 
+        setShow={setShow}
+        isOpen={isOpen}
+        onClose={handleCloseAccountModal} 
+        onOpenChange={onOpen}
+      />
+      )}
     </>
   );
 };
