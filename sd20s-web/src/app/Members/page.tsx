@@ -1,10 +1,10 @@
 "use client"
 import React from 'react';
-import MembersTopBlock from '../../../components/blocks/memberBlock';
-import UpComingEventsBlock from '../../../components/blocks/upComingEventsBlock';
-import SongRequestBlock from '../../../components/blocks/songRequestBlock';
-import PastEventsBlock from '../../../components/blocks/pastEventsBlock';
-import ContactUsBlock from '../../../components/blocks/MemberContactUsBlock';
+import MembersTopBlock from '../../../components/blocks/members-block/memberBlock';
+import UpComingEventsBlock from '../../../components/blocks/members-block/upComingEventsBlock';
+import SongRequestBlock from '../../../components/blocks/members-block/songRequestBlock';
+import PastEventsBlock from '../../../components/blocks/members-block/pastEventsBlock';
+import ContactUsBlock from '../../../components/blocks/members-block/MemberContactUsBlock';
 
 const MembersPage = () => {
   return (
@@ -23,29 +23,3 @@ const MembersPage = () => {
 
 export default MembersPage;
 
-
-
-// import {Form, Input, Button} from "@heroui/react";
-
-// export default function App() {
-//   const onSubmit = (e) => {
-//     e.preventDefault();
-//   };
-
-//   return (
-//     <Form className="w-full max-w-xs" onSubmit={onSubmit}>
-//       <Input
-//         isRequired
-//         errorMessage="Please enter a valid email"
-//         label="Email"
-//         labelPlacement="outside"
-//         name="email"
-//         placeholder="Enter your email"
-//         type="email"
-//       />
-//       <Button type="submit" variant="bordered">
-//         Submit
-//       </Button>
-//     </Form>
-//   );
-// }

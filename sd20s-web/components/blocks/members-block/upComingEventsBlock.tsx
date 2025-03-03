@@ -1,11 +1,11 @@
 "use client"
 // import react from 'react';
 import Image from "next/image";
-import Dawn from "../../public/static-images/members-images/dawn.png"
-import line from "../../public/line.png";
+import Dawn from "../../../public/static-images/members-images/dawn.png"
+import line from "../../../public/line.png";
 import { Card } from "@heroui/react";
-import event1 from  "../../public/static-images/events-images/event1.png";
-import softStar  from "../../public/static-images/modal/soft-star.png";
+import event1 from  "../../../public/static-images/events-images/event1.png";
+import softStar  from "../../../public/static-images/modal/soft-star.png";
 
 
 const UpComingEventsBlock = () => {

@@ -16,18 +16,18 @@ const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
 
   return (
     <>
-  <AnimatePresence>
+  {/* <AnimatePresence>
     <motion.div
             key="newMember"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-          >
+          > */}
 
     {show && (
       <div className='justify-center items-center flex flex-col tight-spacing tracking-tighter'>
-      <AnimatePresence>
+      {/* <AnimatePresence> */}
 
       {!goToNewMemberLogin ? (
         <div className='justify-center items-center text-center uppercase tracking-tighter'>
@@ -60,12 +60,12 @@ const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
       ): (
         <NewMemberWaitlist show={show} setShow={setShow}/>
       )}
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
       </div>
     )}
     {/* </motion.div> */}
-    </motion.div>
-  </AnimatePresence>
+    {/* </motion.div>
+  </AnimatePresence> */}
     </>
   )
 

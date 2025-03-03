@@ -26,7 +26,7 @@ const LoadingScreen = () => {
               <Image src={lockGif} alt="Loading" width={100} height={100} />
             </div>
           <div>
-            <p className="text-lg text-gray-700">Loading...</p>
+            <p className="text-lg text-gray-700">Welcome Back...</p>
           </div>
           </div>
         </motion.div>

@@ -1,8 +1,8 @@
 "use client"
 // import react from 'react';
 import Image from "next/image";
-import direction from "../../public/static-images/song-request-images/direction.png";
-import songBlockPlaceholder from "../../public/static-images/song-request-images/songBlockPlaceHolder.png";
+import direction from "../../../public/static-images/song-request-images/direction.png";
+import songBlockPlaceholder from "../../../public/static-images/song-request-images/songBlockPlaceHolder.png";
 import { Spacer } from "@heroui/spacer";
 
 const SongRequestBlock = () => {

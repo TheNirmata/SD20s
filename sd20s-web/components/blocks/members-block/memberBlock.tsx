@@ -1,7 +1,7 @@
 "use client"
 // import react from 'react';
 import Image from "next/image";
-import MembersImage from "../../public/static-images/members-images/membersImage.png";
+import MembersImage from "../../../public/static-images/members-images/membersImage.png";
 
 const MembersTopBlock = () => {
 

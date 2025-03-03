@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Spacer,Form, Input, Select, SelectItem, Checkbox, Button } from "@heroui/react";
 
-import HorizontalLine from "../../public/horizontalLine.png";
-import contactUsBlur from "../../public/static-images/contact-us-images/contactUsBlur.png";
+import HorizontalLine from "../../../public/horizontalLine.png";
+import contactUsBlur from "../../../public/static-images/contact-us-images/contactUsBlur.png";
 const ContactUsBlock = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

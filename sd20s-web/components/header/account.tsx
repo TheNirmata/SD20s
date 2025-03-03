@@ -1,28 +1,36 @@
 "use client"
-import React, { useState }  from 'react';
-import Image from 'next/image';
-import account from '../../public/account.svg';
+import React, { useState, useEffect  }  from 'react';
+// import Image from 'next/image';
+// import account from '../../public/account.svg';
 import AccountModal from '../modal/accountModal';
 
+import { useDisclosure } from "@heroui/react";
+
+
+
+
+
 const Account = () => {
+  const {isOpen, onOpen } = useDisclosure();
   const [show, setShow] = useState(false);
-  const handleClick = () => {
-    setShow(true)
-  };
+
+  useEffect(() => {
+        onOpen();
+    setShow(true);
+  },[onOpen, show]);
+
 
   return (
     <>
-    <div className='p-5'> 
-      <button onClick={handleClick}>
+      {/* <Button onPress={handleClick}>
         <Image 
           src={account}
           alt='account-icon'
           className='w-[32px] h-[32px]'
           />
-      </button>
-    </div>
+      </Button> */}
     {/* @ts-expect-error -ignore */}
-    {(show) &&  <AccountModal show={show} setShow={setShow} />}
+    {(show && isOpen) &&  <AccountModal show={show} setShow={setShow} isOpen={isOpen} onOpen={onOpen}/>}
     </>
   );
 };

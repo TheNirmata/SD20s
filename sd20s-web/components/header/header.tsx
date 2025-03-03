@@ -9,8 +9,8 @@ import Account from './account';
 const Header = () => {
   return (
     // 'flex flex-row sticky top-0 w-full h-[115px] justify-center items-center rounded-t-xl bg-black space-x-5'
-      <div  className='header flex flex-row'>
-        <div className='p-5'>
+      <div className='header flex flex-row p-10 z[2000]'>
+        <div className=''>
             <Image
             src={IG} 
             alt='instagram-icon' 
@@ -20,7 +20,9 @@ const Header = () => {
         <div className='justify-center items-center text-center space-x-10 w-80'>
           <h1 className='text-[20px]'> NOTHING BUT US </h1>
         </div>
-        <Account />
+    
+       <Account />
+     
       </div>
   );
 };
