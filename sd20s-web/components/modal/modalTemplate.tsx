@@ -1,27 +1,24 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ModalTemplateProps from '../../interface/modal';
 import Image from 'next/image';
 import waitlistHeading from '../../public/static-images/modal/waitlistHeading.png';
 import softStar from '../../public/static-images/modal/soft-star.png';
 import { Spacer } from "@heroui/react";
 
-// import account from '../../public/account.svg';
-
 import {
-  Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
+
 } from "@heroui/react";
 
 //@ts-expect-error - ignore
 //props are coming from Account component
-const ModalTemplate = ({ show, setShow, isOpen, onOpen, close, onOpenChange, children }: ModalTemplateProps) => {
-  // const { onClose } = useDisclosure();
+const ModalTemplate = ({ show, isOpen, children }: ModalTemplateProps) => {
+
   useEffect(() => {
     if (!show) return;
     if (show) {
@@ -38,7 +35,7 @@ const ModalTemplate = ({ show, setShow, isOpen, onOpen, close, onOpenChange, chi
     <>
       {isOpen && ( 
         <div className="flex flex-col justify-center items-center">
-          <Modal
+          {/* <Modal
             backdrop="opaque"
             classNames={{
               body: "py-10 px-5",
@@ -49,14 +46,14 @@ const ModalTemplate = ({ show, setShow, isOpen, onOpen, close, onOpenChange, chi
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             placement="center"
-          >
+          > */}
             <ModalContent>
-              {/* {(onClose) => ( */}
+              {(onClose) => (
                 <>
                   <ModalHeader className="flex flex-col gap-1 relative ">
                     <div className="absolute w-full h-full ">
                       <Button
-                        onPress={close}
+                        onPress={onClose}
                         className="absolute top-4 right-4 text-white text-2xl"
                       >
                         ×
@@ -90,9 +87,9 @@ const ModalTemplate = ({ show, setShow, isOpen, onOpen, close, onOpenChange, chi
                   </ModalFooter>
                   <Spacer y={10}/>
                 </>
-               {/* )}  */}
+              )} 
             </ModalContent>
-          </Modal>
+          {/* </Modal> */}
         </div>
       )}
     </> 

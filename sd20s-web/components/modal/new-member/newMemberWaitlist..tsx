@@ -28,7 +28,7 @@ const NewMemberWaitlist: React.FC<NewMemberWatilistProps> = ({ show, setShow }) 
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
             className="h-full"
-      >
+        >
           { show && ( 
                 <>
                 {!confirm ? (
