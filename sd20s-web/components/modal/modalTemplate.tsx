@@ -1,15 +1,15 @@
 "use client"
 import React, { useEffect } from 'react';
-import ModalTemplateProps from '../../interface/modal';
+// import ModalTemplateProps from '../../interface/modal';
 import Image from 'next/image';
 import waitlistHeading from '../../public/static-images/modal/waitlistHeading.png';
 import softStar from '../../public/static-images/modal/soft-star.png';
 import { Spacer } from "@heroui/react";
 import { useAccountModalContext } from '../context/accountModalContext';
-import ReactNode from 'react';
+// import ReactNode from 'react';
 
 import {
-  Modal,
+  // Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
@@ -20,7 +20,7 @@ import {
 
 //props are coming from Account component
 const ModalTemplate = ({ children }) => {
-  const { show, isOpen, onOpenChange, handleCloseModal } = useAccountModalContext();
+  const { show, isOpen } = useAccountModalContext();
 
   useEffect(() => {
     if (!show) return;
@@ -38,18 +38,6 @@ const ModalTemplate = ({ children }) => {
     <>
       {isOpen && ( 
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          {/* <Modal
-            backdrop="opaque"
-            classNames={{
-              body: "py-10 px-5",
-              backdrop: "bg-black backdrop-opacity-20",
-              base: "modal-container",
-              closeButton: "hidden"
-            }} 
-            isOpen={isOpen}
-            onOpenChange={onOpenChange}
-            placement="center"
-          > */}
             <ModalContent>
               {(onClose) => (
                 <>
@@ -92,7 +80,6 @@ const ModalTemplate = ({ children }) => {
                 </>
               )} 
             </ModalContent>
-          {/* </Modal>  */}
         </div>
       )}
     </> 

@@ -1,9 +1,12 @@
 "use client"
-// import react from 'react';
+import React, { useEffect } from 'react';
 import Image from "next/image";
 import MembersImage from "../../../public/static-images/members-images/membersImage.png";
 
 const MembersTopBlock = () => {
+  useEffect(()=> {
+    document.body.style.overflow = "unset";
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center text-[#D9D9D9]">

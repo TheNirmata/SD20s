@@ -8,6 +8,7 @@ import ModalTemplate from '../modal/modalTemplate';
 import { Modal, ModalContent, ModalBody, Button } from "@heroui/react"; //useDisclosure
 import NewMemberModal from '../modal/new-member/newMemberModal';
 import ExistingMemberModal from '../modal/returning-member/existingMemberModal';
+import LoadingScreen from '../modal/returning-member/loadingScreen';
 
 const Account = () => {
   // const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
@@ -20,6 +21,7 @@ const Account = () => {
     onOpenChange, 
     showForm,
     setShowForm,
+    showExistingMemberLoadingScreen,
    } = useAccountModalContext();
   // const [show, setShow] = useState(false);
   // const [showForm, setShowForm] = useState(false);
@@ -59,51 +61,44 @@ const Account = () => {
 
 
   useEffect(() => {
-    console.log('isOpen state changed:', isOpen);
-  }, [isOpen]);
-
-  useEffect(() => {
     console.log('show state changed:', show);
     console.log('show form state changed:', showForm);
     console.log('isNewMember state changed:', isNewMember);
-  }, [show, showForm, isNewMember]);
+  }, [show, isOpen, showForm, isNewMember, showExistingMemberLoadingScreen]);
 
 
   return (
     <>
-    <Button onPress={handleOpenAccountModal}>
-          <Image 
-            src={account}
-            alt='account-icon'
-            className='max-w-[32px] max-h-[32px]'
-          />
-        </Button>
-      {/* </div> */}
-  {/* {show && ( */}
-        <Modal
-        backdrop="opaque"
-        classNames={{
-          backdrop: "bg-black",
-          base: "modal-container",
-          closeButton: "hidden"
-        }}
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        placement="center"
-      >
-        <ModalContent>
-          <ModalBody>
-            <ModalTemplate>
+ <Button onPress={handleOpenAccountModal}>
+      <Image 
+        src={account}
+        alt='account-icon'
+        className='max-w-[32px] max-h-[32px]'
+      />
+    </Button>
+    <Modal
+      backdrop="opaque"
+      classNames={{
+        backdrop: "bg-black",
+        base: "modal-container",
+        closeButton: "hidden"
+      }}
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
+      placement="center"
+    >
+      <ModalContent>
+        <ModalBody>
+          <ModalTemplate>
             <div className='sm:h-[467px] text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
-            <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait">
                 {!showForm ? (
                   <motion.div
                     key="buttons"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3}}
-
+                    transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
                   >
                     <div className='p-3 -translate-x-2 translate-y-5 justify-center items-center'>
                       <button 
@@ -118,7 +113,7 @@ const Account = () => {
                         className='bg-white border-white rounded-md text-black w-[242px] h-[47px]' 
                         onClick={handleExistingMember}
                       >
-                        <span className='text-transform: uppercxase tight-spacing tracking-tighter'>Returning Member</span>
+                        <span className='text-transform: uppercase tight-spacing tracking-tighter'>Returning Member</span>
                       </button>
                     </div>
                   </motion.div>
@@ -128,7 +123,7 @@ const Account = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3}}
+                    transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
                   >
                     {isNewMember ? (
                       <NewMemberModal />
@@ -139,12 +134,12 @@ const Account = () => {
                 )}
               </AnimatePresence>
             </div>
-            </ModalTemplate>
-          </ModalBody>
-    </ModalContent>
-      </Modal>
-  {/* )} */}
-    </>
+          </ModalTemplate>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+     {showExistingMemberLoadingScreen && <LoadingScreen />}
+  </>
   );
 };
 
