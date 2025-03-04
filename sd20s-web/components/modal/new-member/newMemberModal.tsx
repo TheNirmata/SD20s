@@ -1,13 +1,15 @@
 "use client"
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { motion } from 'motion/react';
-import type { NewMemberModalProps } from '../../../interface/modal';
+// import { AnimatePresence } from 'framer-motion';
+// import { motion } from 'motion/react';
+// import type { NewMemberModalProps } from '../../../interface/modal';
 import NewMemberWaitlist from './newMemberWaitlist.';
+import { useAccountModalContext } from '../../context/accountModalContext';
 // import Image from 'next/image';
 
-const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
+const NewMemberModal = () => {
   const [goToNewMemberLogin, setGoToNewMemberLogin] = useState<boolean>(false);
+  const { show, setShow } = useAccountModalContext();
   
   const handleNewMemberLogin = () => {
     setShow(true);

@@ -2,21 +2,30 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import account from '../../public/account.svg';
-// import AccountModal from '../modal/accountModal';
+import { useAccountModalContext } from '../context/accountModalContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import LoadingScreen from '../modal/returning-member/loadingScreen';
 import ModalTemplate from '../modal/modalTemplate';
-import { Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure } from "@heroui/react";
+import { Modal, ModalContent, ModalBody, Button } from "@heroui/react"; //useDisclosure
 import NewMemberModal from '../modal/new-member/newMemberModal';
 import ExistingMemberModal from '../modal/returning-member/existingMemberModal';
 
 const Account = () => {
-  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
-  const [show, setShow] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  // const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
+  const {
+    show, 
+    setShow,
+    isOpen, 
+    onOpen, 
+    // onClose, 
+    onOpenChange, 
+    showForm,
+    setShowForm,
+   } = useAccountModalContext();
+  // const [show, setShow] = useState(false);
+  // const [showForm, setShowForm] = useState(false);
   const [isNewMember, setIsNewMember] = useState(false);
-  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
-  const [contentType, setContentType] = useState('');
+  // const [contentType, setContentType] = useState('');
+  // const [showLoadingScreen, setShowLoadingScreen] = useState(false);
 
   const handleOpenAccountModal = () => {
     onOpen();
@@ -28,25 +37,25 @@ const Account = () => {
   const handleNewMember = () => {
     setIsNewMember(true);
     setShowForm(true);
-    setContentType('newMember');
+    // setContentType('newMember');
     console.log('New member clicked');
   };
 
   const handleExistingMember = () => {
     setIsNewMember(false);
     setShowForm(true);
-    setContentType('existingMember');
+    // setContentType('existingMember');
     console.log('existing member clicked');
   };
 
-  const handleCloseModal = () => {
-    setShow(false); // Trigger fade-out animation immediately
-    onClose();
-    setTimeout(() => {
-      setShowForm(false);
-      setIsNewMember(false);
-    }, 300);
-  };
+  // const handleCloseModal = () => {
+  //   setShow(false); // Trigger fade-out animation immediately
+  //   onClose();
+  //   setTimeout(() => {
+  //     setShowForm(false);
+  //     setIsNewMember(false);
+  //   }, 300);
+  // };
 
 
   useEffect(() => {
@@ -62,8 +71,7 @@ const Account = () => {
 
   return (
     <>
-      {showLoadingScreen && <LoadingScreen />}
-        <Button onPress={handleOpenAccountModal}>
+    <Button onPress={handleOpenAccountModal}>
           <Image 
             src={account}
             alt='account-icon'
@@ -71,7 +79,8 @@ const Account = () => {
           />
         </Button>
       {/* </div> */}
-      <Modal
+  {/* {show && ( */}
+        <Modal
         backdrop="opaque"
         classNames={{
           backdrop: "bg-black",
@@ -84,7 +93,7 @@ const Account = () => {
       >
         <ModalContent>
           <ModalBody>
-            <ModalTemplate isOpen={isOpen} onOpenChange={onOpenChange} close={handleCloseModal} contentType={contentType}>
+            <ModalTemplate>
             <div className='sm:h-[467px] text-[24px] translate-x-2 justify-center items-center text-transform: uppercase tight-spacing tracking-tighter'>
             <AnimatePresence mode="wait">
                 {!showForm ? (
@@ -122,9 +131,9 @@ const Account = () => {
                     transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3}}
                   >
                     {isNewMember ? (
-                      <NewMemberModal show={show} setShow={setShow} isGoingToNewMemberLogin={true} />
+                      <NewMemberModal />
                     ) : (
-                      <ExistingMemberModal show={show} setShow={setShow} setShowLoadingScreen={setShowLoadingScreen} />
+                      <ExistingMemberModal />
                     )}
                   </motion.div>
                 )}
@@ -134,6 +143,7 @@ const Account = () => {
           </ModalBody>
     </ModalContent>
       </Modal>
+  {/* )} */}
     </>
   );
 };

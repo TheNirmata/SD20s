@@ -12,14 +12,15 @@ const LoadingScreen = () => {
   }, []);
 
   return (
+    <div className="loading-screen">
     <AnimatePresence>
       {loading && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className=" w-[100%] h-[100%] fixed inset-0 flex items-center justify-center bg-black z-[9999]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="loading-screen-content"
         >
           <div className="flex flex-col items-center">
             <div>
@@ -32,9 +33,8 @@ const LoadingScreen = () => {
         </motion.div>
       )}
     </AnimatePresence>
+  </div>
   );
-
-
 };
 
 export default LoadingScreen;

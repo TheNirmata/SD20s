@@ -5,8 +5,11 @@ import Image from 'next/image';
 import waitlistHeading from '../../public/static-images/modal/waitlistHeading.png';
 import softStar from '../../public/static-images/modal/soft-star.png';
 import { Spacer } from "@heroui/react";
+import { useAccountModalContext } from '../context/accountModalContext';
+import ReactNode from 'react';
 
 import {
+  Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
@@ -15,9 +18,9 @@ import {
 
 } from "@heroui/react";
 
-//@ts-expect-error - ignore
 //props are coming from Account component
-const ModalTemplate = ({ show, isOpen, children }: ModalTemplateProps) => {
+const ModalTemplate = ({ children }) => {
+  const { show, isOpen, onOpenChange, handleCloseModal } = useAccountModalContext();
 
   useEffect(() => {
     if (!show) return;
@@ -34,7 +37,7 @@ const ModalTemplate = ({ show, isOpen, children }: ModalTemplateProps) => {
   return (
     <>
       {isOpen && ( 
-        <div className="flex flex-col justify-center items-center">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
           {/* <Modal
             backdrop="opaque"
             classNames={{
@@ -50,7 +53,7 @@ const ModalTemplate = ({ show, isOpen, children }: ModalTemplateProps) => {
             <ModalContent>
               {(onClose) => (
                 <>
-                  <ModalHeader className="flex flex-col gap-1 relative ">
+                  <ModalHeader className="flex flex-col gap-1 relative -trsnalate-y-20">
                     <div className="absolute w-full h-full ">
                       <Button
                         onPress={onClose}
@@ -89,7 +92,7 @@ const ModalTemplate = ({ show, isOpen, children }: ModalTemplateProps) => {
                 </>
               )} 
             </ModalContent>
-          {/* </Modal> */}
+          {/* </Modal>  */}
         </div>
       )}
     </> 

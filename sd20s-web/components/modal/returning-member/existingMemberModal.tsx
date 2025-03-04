@@ -1,21 +1,27 @@
 "use client"
 import React from 'react';
+import { useAccountModalContext } from '../../context/accountModalContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-// import { useLoading } from '../../context/loadingContext';
+import LoadingScreen from './loadingScreen';
 
-interface ExistingUserProps { 
-  show: boolean;
-  setShow: (show: boolean) => void;
-  setShowLoadingScreen: (any: boolean) => void;
-}
+// interface ExistingUserProps { 
+  // show: boolean;
+  // setShow: (show: boolean) => void;
+  // setShowLoadingScreen: (any: boolean) => void;
+  // showLoadingScreen: boolean;
+  // setShowLoadingScreen: (value: boolean) => void;
+// }
 
-const ExistingMemberModal: React.FC<ExistingUserProps> = ({ show, setShow, setShowLoadingScreen }) => {
+// React.FC<ExistingUserProps> 
+
+const ExistingMemberModal = () => {
   // const { setShowLoading } = useLoading();
+  const { show, setShow, showExistingMemberLoadingScreen, setshowExistingMemberLoadingScreen } = useAccountModalContext();
   const router = useRouter();
   const handleFinish = async () => {
     try { 
-      setShowLoadingScreen(true);
+      setshowExistingMemberLoadingScreen(true);
       console.log("Submitting form...");
       // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -29,11 +35,13 @@ const ExistingMemberModal: React.FC<ExistingUserProps> = ({ show, setShow, setSh
 
   return (
 
-      <AnimatePresence>
+      <>
+      {showExistingMemberLoadingScreen && (<LoadingScreen />)}
+      <AnimatePresence onExitComplete={() => setShow(false)}>
         {show && (
           <motion.div
-            key="existingMember"
-            initial={{ opacity: 0 }}
+          key="existingMember"
+          initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -63,6 +71,7 @@ const ExistingMemberModal: React.FC<ExistingUserProps> = ({ show, setShow, setSh
           </motion.div>
         )}
       </AnimatePresence>
+    </>
   );
 };
 

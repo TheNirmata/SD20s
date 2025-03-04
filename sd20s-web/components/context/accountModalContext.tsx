@@ -14,6 +14,8 @@ const AccountModalContext = createContext({
   handleCloseModal: () => {},
   showForm: false,
   setShowForm: (value: boolean) => {},
+  showExistingMemberLoadingScreen: false,
+  setshowExistingMemberLoadingScreen: (value: boolean) => {}
 });
 
 interface AccountModalProviderProps {
@@ -25,6 +27,7 @@ export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ chil
   const [show, setShow] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const { isOpen, onOpen,  onClose, onOpenChange } = useDisclosure();
+  const [showExistingMemberLoadingScreen, setshowExistingMemberLoadingScreen] = useState(false);
 
   const handleOpenModal = () => {
     onOpen();
@@ -44,7 +47,19 @@ export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ chil
 
   return (
     //@ts-expect-error - ignore
-    <AccountModalContext.Provider value={{ show, setShow, showForm, setShowForm, isOpen, onOpen, onOpenChange, handleOpenModal, handleCloseModal }}>
+    <AccountModalContext.Provider value={{ 
+      show, 
+      setShow, 
+      showForm, 
+      setShowForm, 
+      isOpen, 
+      onOpen, 
+      onOpenChange, 
+      handleOpenModal, 
+      handleCloseModal,
+      showExistingMemberLoadingScreen,
+      setshowExistingMemberLoadingScreen
+      }}>
       {children}
     </AccountModalContext.Provider>
   );
