@@ -1,33 +1,37 @@
 "use client"
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { motion } from 'motion/react';
-import type { NewMemberModalProps } from '../../../interface/modal';
+// import { AnimatePresence } from 'framer-motion';
+// import { motion } from 'motion/react';
+// import type { NewMemberModalProps } from '../../../interface/modal';
 import NewMemberWaitlist from './newMemberWaitlist.';
+import { useAccountModalContext } from '../../context/accountModalContext';
 // import Image from 'next/image';
+import NewMemberLogin from './newMemberLogin';
 
-const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
+const NewMemberModal = () => {
   const [goToNewMemberLogin, setGoToNewMemberLogin] = useState<boolean>(false);
+  const { show, setShow, isWaitlisted } = useAccountModalContext();
   
   const handleNewMemberLogin = () => {
     setShow(true);
     setGoToNewMemberLogin(true);
   };
 
+
   return (
     <>
-  <AnimatePresence>
+  {/* <AnimatePresence>
     <motion.div
             key="newMember"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-          >
+          > */}
 
     {show && (
       <div className='justify-center items-center flex flex-col tight-spacing tracking-tighter'>
-      <AnimatePresence>
+      {/* <AnimatePresence> */}
 
       {!goToNewMemberLogin ? (
         <div className='justify-center items-center text-center uppercase tracking-tighter'>
@@ -57,15 +61,19 @@ const NewMemberModal = ({ show, setShow }: NewMemberModalProps) => {
             </button>
           </div>
         </div>
-      ): (
-        <NewMemberWaitlist show={show} setShow={setShow}/>
+      ) : (
+        isWaitlisted ? (
+          <NewMemberWaitlist/>
+        ) : (
+          <NewMemberLogin />
+        )
       )}
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
       </div>
     )}
     {/* </motion.div> */}
-    </motion.div>
-  </AnimatePresence>
+    {/* </motion.div>
+  </AnimatePresence> */}
     </>
   )
 

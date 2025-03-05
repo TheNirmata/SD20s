@@ -10,7 +10,7 @@ import titleText2 from '../../public/static-images/landing-block-images/titleTex
 
 const LandingBlock = () => {
   return (
-    <div className='overflow-x-hidden flex-col'>
+    <div className='overflow-x-hidden flex-col -z-0'>
       <div className='translate-x-10 -translate-y-12 justify-end'>
         <Image 
         alt='image-A'
@@ -30,7 +30,7 @@ const LandingBlock = () => {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
         </div>
       </div>
-      <div className='z-5 -translate-y-32 mt-2 -translate-x-7 ml-6'>
+      <div className='z-5 -translate-y-32 mt-2 -translate-x-7 ml-6 z-0'>
         <Image 
         alt='image-B'
         src={imageB}

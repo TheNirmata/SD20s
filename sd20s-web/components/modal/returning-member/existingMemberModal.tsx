@@ -1,43 +1,63 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAccountModalContext } from '../../context/accountModalContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-// import { useLoading } from '../../context/loadingContext';
+// import LoadingScreen from './loadingScreen';
 
-interface ExistingUserProps { 
-  show: boolean;
-  setShow: (show: boolean) => void;
-  setShowLoadingScreen: (any: boolean) => void;
-}
+const ExistingMemberModal = () => {
+  const { 
+    isOpen, 
+    show, 
+    setShow,
+    handleCloseModal, 
+    // showExistingMemberLoadingScreen, 
+    setshowExistingMemberLoadingScreen 
+  } = useAccountModalContext();
 
-const ExistingMemberModal: React.FC<ExistingUserProps> = ({ show, setShow, setShowLoadingScreen }) => {
-  // const { setShowLoading } = useLoading();
   const router = useRouter();
+  useEffect(() => {
+    if (!show) return;
+    document.body.style.overflow = show ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [show]);
+
   const handleFinish = async () => {
     try { 
-      setShowLoadingScreen(true);
+      setShow(false); // Close the modal
+      setshowExistingMemberLoadingScreen(true); // Show the loading screen
       console.log("Submitting form...");
       // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      console.log("Form submitted successfully");
       await router.replace('/Members');
-      setTimeout(() => setShow(false), 3000);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      const handleChangeComplete = () => {
+        setShow(false);
+        setTimeout(() => setshowExistingMemberLoadingScreen(false), 3000);
+      };
+  
+      handleChangeComplete();
+      console.log("Form submitted successfully");
+      // setshowExistingMemberLoadingScreen(false); // Hide the loading screen
     } catch(e) {
       console.error("Error submitting form", e);
+      setshowExistingMemberLoadingScreen(false); // Hide the loading screen in case of error
     }
   };
 
   return (
-
-      <AnimatePresence>
-        {show && (
+    <>
+    {/* {showExistingMemberLoadingScreen && <LoadingScreen />} */}
+      <AnimatePresence onExitComplete={handleCloseModal}>
+        {isOpen && show && (
           <motion.div
             key="existingMember"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="z-[-1]"
+            className="z-50"
           >
             <div className='justify-center items-center flex flex-col tight-spacing tracking-tighter'>
               <div className='justify-center items-center text-center uppercase tracking-tighter'>
@@ -63,6 +83,7 @@ const ExistingMemberModal: React.FC<ExistingUserProps> = ({ show, setShow, setSh
           </motion.div>
         )}
       </AnimatePresence>
+    </>
   );
 };
 
