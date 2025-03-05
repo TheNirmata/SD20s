@@ -3,9 +3,8 @@
 import Image from "next/image";
 import Dawn from "../../../public/static-images/members-images/dawn.png"
 import line from "../../../public/line.png";
-import { Card } from "@heroui/react";
-import event1 from  "../../../public/static-images/events-images/event1.png";
-import softStar  from "../../../public/static-images/modal/soft-star.png";
+import event1 from "../../../public/static-images/events-images/event1.png";
+import {Spacer, Card} from "@heroui/react";
 
 
 const UpComingEventsBlock = () => {
@@ -13,19 +12,19 @@ const UpComingEventsBlock = () => {
     name: "event 1", 
     when: "Monday, Janurary 1, 2025",
     where: "Location A",
-    image: "../../../public/static-images/events-images/event1.png"
+    image: "temp"
     },
     {
       name: "event 2", 
       when: "Friday, Janurary 2, 2025",
       where: "Location B",
-      image: "../../../public/static-images/events-images/event1.png"
+      image: "../../../public/static-images/members-images/event1.png"
     },
     {
       name: "event 3", 
       when: "Sunday, Janurary 3, 2025",
       where: "Location C",
-      image: "../../../public/static-images/events-images/event1.png"
+      image: "../../../public/static-images/members-images/event1.png"
     },
   ];
   return (
@@ -39,59 +38,45 @@ const UpComingEventsBlock = () => {
       </div>
       </div>
       <div className="-translate-y-20 flex flex-row">
-          <div className=" w-[5px] h-[480px] -translate-x-1">
-            <Image src={line} alt="line" layout="fill" objectFit="cover" />
+          <div className="translate-x-5">
+            <Image src={line} alt="line" width={1} height={50} />
           </div>
-            <div className="-translate-y-7 flex flex-col w-[320px]">
+            <div className="flex flex-col">
             {events.map((event, i) =>(
-              <Card 
-                className="-translate-x-5 border-spacing-x-2 m-4 p-4 max-w-[310px] w-[310px] h-[140px] bg-default-300 rounded-lg"
-                key={i}
-                style={{ 
-                  backgroundImage: `url(${event.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                
-                }}
-                >
-                    <div className="flex flex-col -z-10  w-[314px]">
-                    <Image src={event1} alt={`event-${i}`} className="h-[50px] -z-10"/>
-                    </div>
-                    <div>
-                  <div className="h-24 rounded-lg bg-default-300 uppercase text-[17px]" >
-                      <div className="-translate-y-2 leading-none">
-                        <h1 className="text-[28px]">{event.name}</h1>
-                        <h3>{event.when}</h3>
-                        <h3>{event.where}</h3>
+                  <Card 
+                    className="translate-x-10 border-grey "
+                    key={i}
+                    style={{ backgroundImage: `url(${event.image})` }}
+                    >
+                    <>
+                      <div className="w-[100px] h-[50px] overflow-hidden -z-20">
+                        <Image src={event1} alt="event" 
+                          width={280} 
+                          height={50} 
+                          className="h-[55px] w-[280px]"  />
                       </div>
-                    </div>
-                    <div className="-translate-x-5 -translate-y-12 justify-center items-center">
-                      <button className="bg-white border-white rounded-md text-black w-[314px] h-[15.7px] m-5">
-                        <p className="uppercase text-[12px] justify-center">Tickets</p>
-                      </button>
-                    </div>
-                  </div>
-              </Card>
+                        <div className={`-translate-y-5 flex flex-row h-24 rounded-lg bg-default-300 uppercase`}>
+                          <div className="text-[24px]">
+                          <h1>{event.name}</h1>
+                          </div>
+                          <Spacer x={16} />
+                          <div className="text-left">
+                          <h3>{event.when}</h3>
+                          <h3>{event.where}</h3>
+                          </div>
+                        </div>
+                      <div className="-translate-y-10 -translate-x-5">
+                        <button className="bg-white border-white rounded-md text-black w-[280px] h-[15.7px] -translate-y-10 m-5">
+                          <p className="uppercase text-[12px] justify-center">Tickets</p>
+                        </button>
+                        </div>
+                  </>
+                  </Card>
             ))}
             </div>
       </div>
-      <div className="flex flex-col">
-      <div className="items-center">
-        <Image
-          src={softStar}
-          alt="soft-star"
-          width={35}
-          height={41}
-          className="translate-x-32 -translate-y-20"
-          />
-      </div>
-      <div>
-        <button className="translate-x-2 -translate-y-20 bg-white border-white rounded-md text-black w-[256px] h-[48px] m-5">
-          <p className="uppercase text-[24px]">View All Events</p>
-        </button>
-      </div>
+
     </div>
-  </div>
   );
 };
 export default UpComingEventsBlock;

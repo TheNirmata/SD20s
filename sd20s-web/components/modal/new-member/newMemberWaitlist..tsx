@@ -5,19 +5,27 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import softBlur from '../../../public/static-images/modal/soft-blur.png';
 import WaitlistConfirmation from './waitListConfirmation';
+import { useAccountModalContext } from '../../context/accountModalContext';
 
-interface NewMemberWatilistProps { 
-  show: boolean, 
-  setShow: (show: boolean) => void
-}
+// interface NewMemberWatilistProps { 
+//   show: boolean, 
+//   setShow: (show: boolean) => void
+// }
 
-const NewMemberWaitlist: React.FC<NewMemberWatilistProps> = ({ show, setShow }) => {
+const NewMemberWaitlist = () => { //React.FC<NewMemberWatilistProps>
   const [confirm, setConfirm] = useState(false);
+  const { show, setShow } = useAccountModalContext();
+  // const [data, setData] = useState({
+  //   name: '',
+  //   birthday: '',
+  //   email: ''})
 
   const handleConfirmation = () => {
     setShow(true);
     setConfirm(true);
   };
+
+  // const handleLoginInput = () => {};
   return (
     <>
       <AnimatePresence>

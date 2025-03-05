@@ -6,15 +6,17 @@ import React, { useState } from 'react';
 import NewMemberWaitlist from './newMemberWaitlist.';
 import { useAccountModalContext } from '../../context/accountModalContext';
 // import Image from 'next/image';
+import NewMemberLogin from './newMemberLogin';
 
 const NewMemberModal = () => {
   const [goToNewMemberLogin, setGoToNewMemberLogin] = useState<boolean>(false);
-  const { show, setShow } = useAccountModalContext();
+  const { show, setShow, isWaitlisted } = useAccountModalContext();
   
   const handleNewMemberLogin = () => {
     setShow(true);
     setGoToNewMemberLogin(true);
   };
+
 
   return (
     <>
@@ -59,8 +61,12 @@ const NewMemberModal = () => {
             </button>
           </div>
         </div>
-      ): (
-        <NewMemberWaitlist show={show} setShow={setShow}/>
+      ) : (
+        isWaitlisted ? (
+          <NewMemberWaitlist/>
+        ) : (
+          <NewMemberLogin />
+        )
       )}
       {/* </AnimatePresence> */}
       </div>

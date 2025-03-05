@@ -4,13 +4,19 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import lockGif from "../../../public/lockGif.gif";
 
+
 const LoadingScreen = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
    setLoading(true);
-   document.body.style.overflow = "hidden";
-  }, []);
+   const disableScroll = setTimeout(() => {
+    document.body.style.overflow = "hidden";
+  }, 300);
+  return () => {
+    clearTimeout(disableScroll);
+  };
+  }, [disableScroll]);
 
   return (
     // <div className="fixed inset-0 flex justify-center items-center"> 
@@ -21,7 +27,7 @@ const LoadingScreen = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3,  ease: "easeInOut" }}
             className="loading-screen-content"
             >
             <div className="flex flex-col -mt-20 items-center">

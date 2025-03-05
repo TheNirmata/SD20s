@@ -9,6 +9,8 @@ import { Modal, ModalContent, ModalBody, Button } from "@heroui/react"; //useDis
 import NewMemberModal from '../modal/new-member/newMemberModal';
 import ExistingMemberModal from '../modal/returning-member/existingMemberModal';
 import LoadingScreen from '../modal/returning-member/loadingScreen';
+import NewMemberLogin from '../modal/new-member/newMemberLogin';
+import NewMemberLoadingScreen from '../modal/new-member/newMemberLoadingScreen';
 
 const Account = () => {
   // const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
@@ -22,6 +24,8 @@ const Account = () => {
     showForm,
     setShowForm,
     showExistingMemberLoadingScreen,
+    showNewMemberLoadingScreen
+  
    } = useAccountModalContext();
   // const [show, setShow] = useState(false);
   // const [showForm, setShowForm] = useState(false);
@@ -83,7 +87,7 @@ const Account = () => {
         base: "modal-container",
         closeButton: "hidden"
       }}
-      isOpen={isOpen}
+      isOpen={isOpen && !showNewMemberLoadingScreen}
       onOpenChange={onOpenChange}
       placement="center"
     >
@@ -139,6 +143,7 @@ const Account = () => {
       </ModalContent>
     </Modal>
      {showExistingMemberLoadingScreen && <LoadingScreen />}
+     {showNewMemberLoadingScreen && <NewMemberLoadingScreen />}
   </>
   );
 };

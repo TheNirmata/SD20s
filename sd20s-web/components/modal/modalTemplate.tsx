@@ -9,7 +9,7 @@ import { useAccountModalContext } from '../context/accountModalContext';
 // import ReactNode from 'react';
 
 import {
-  // Modal,
+  Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
@@ -20,10 +20,11 @@ import {
 
 //props are coming from Account component
 const ModalTemplate = ({ children }) => {
-  const { show, isOpen } = useAccountModalContext();
+  const { show, isOpen, handleCloseModal } = useAccountModalContext();
 
   useEffect(() => {
     if (!show) return;
+    
     if (show) {
       document.body.style.overflow = "hidden";
     } else {
@@ -39,17 +40,17 @@ const ModalTemplate = ({ children }) => {
       {isOpen && ( 
         <div className="fixed inset-0 flex items-center justify-center z-50">
             <ModalContent>
-              {(onClose) => (
+              {/* {(onClose) =>  ( */}
                 <>
+                <div className="absolute w-full h-full ">
+                  <Button
+                    onPress={handleCloseModal}
+                    className="h-auto translate-x-2 absolute top-4 right-4 text-white text-2xl"
+                  >
+                    ×
+                  </Button>
+                </div>
                   <ModalHeader className="flex flex-col gap-1 relative -trsnalate-y-20">
-                    <div className="absolute w-full h-full ">
-                      <Button
-                        onPress={onClose}
-                        className="absolute top-4 right-4 text-white text-2xl"
-                      >
-                        ×
-                      </Button>
-                    </div>
                     <div className='items-center'>
                       <div className='pt-5'>
                         <Image
@@ -63,7 +64,7 @@ const ModalTemplate = ({ children }) => {
                       </div>
                     </div>
                   </ModalHeader>
-                  <ModalBody className="justify-center items-center">
+                  <ModalBody className="modal-template justify-center items-center">
                     {children}
                   </ModalBody>
                   <ModalFooter>
@@ -78,7 +79,7 @@ const ModalTemplate = ({ children }) => {
                   </ModalFooter>
                   <Spacer y={10}/>
                 </>
-              )} 
+              {/* )}  */}
             </ModalContent>
         </div>
       )}
