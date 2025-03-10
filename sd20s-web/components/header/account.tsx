@@ -19,19 +19,16 @@ const Account = () => {
     setShow,
     isOpen, 
     onOpen, 
-    // onClose, 
+    onClose, 
     onOpenChange, 
     showForm,
     setShowForm,
     showExistingMemberLoadingScreen,
-    showNewMemberLoadingScreen
-  
+    showNewMemberLoadingScreen,
+    shouldPreventReopen,
+    isNewMember,
+    setIsNewMember,
    } = useAccountModalContext();
-  // const [show, setShow] = useState(false);
-  // const [showForm, setShowForm] = useState(false);
-  const [isNewMember, setIsNewMember] = useState(false);
-  // const [contentType, setContentType] = useState('');
-  // const [showLoadingScreen, setShowLoadingScreen] = useState(false);
 
   const handleOpenAccountModal = () => {
     onOpen();
@@ -53,15 +50,6 @@ const Account = () => {
     // setContentType('existingMember');
     console.log('existing member clicked');
   };
-
-  // const handleCloseModal = () => {
-  //   setShow(false); // Trigger fade-out animation immediately
-  //   onClose();
-  //   setTimeout(() => {
-  //     setShowForm(false);
-  //     setIsNewMember(false);
-  //   }, 300);
-  // };
 
 
   useEffect(() => {
@@ -87,8 +75,12 @@ const Account = () => {
         base: "modal-container",
         closeButton: "hidden"
       }}
-      isOpen={isOpen && !showNewMemberLoadingScreen}
-      onOpenChange={onOpenChange}
+      isOpen={isOpen && !showNewMemberLoadingScreen && !shouldPreventReopen}
+      onOpenChange={(open) => {
+        if (!shouldPreventReopen) {
+          onOpenChange(open);
+        }
+      }}
       placement="center"
     >
       <ModalContent>

@@ -8,7 +8,7 @@ const AccountModalContext = createContext({
   setShow: (value: boolean) => {},
   isOpen: false,
   onOpen: () => {},
-  close: () => {},
+  onClose: () => {},
   onOpenChange: () => {},
   handleOpenModal: () => {},
   handleCloseModal: () => {},
@@ -34,6 +34,7 @@ export const useAccountModalContext = () => useContext(AccountModalContext);
 export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ children }) => {
   const [show, setShow] = useState(false);
   const [showForm, setShowForm] = useState(false);
+    const [isNewMember, setIsNewMember] = useState(false);
   const { isOpen, onOpen,  onClose, onOpenChange } = useDisclosure();
   const [showExistingMemberLoadingScreen, setshowExistingMemberLoadingScreen] = useState(false);
   const [showNewMemberLoadingScreen, setShowNewMemberLoadingScreen] = useState(false);
@@ -42,7 +43,21 @@ export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ chil
   const eventCapacity = 100;
   const currentCountOfAttendees = 0;
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (shouldPreventReopen) {
+        localStorage.setItem('formSubmitted', 'true');
+      } else {
+        localStorage.removeItem('formSubmitted');
+      }
+    }
+  }, [shouldPreventReopen]);
+
   const handleOpenModal = () => {
+    if (shouldPreventReopen) {
+      console.log('Modal is prevented from reopening');
+      return;
+    }
     onOpen();
     setShow(true);
     setShowForm(true);
@@ -50,11 +65,23 @@ export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ chil
   };
 
   const handleCloseModal = () => {
+    console.log('Closing modal, isOpen before:', isOpen);
+    setShouldPreventReopen(true);
     onClose();
     setShow(false);
     setShowForm(false);
-    // onOpenChange();
-    console.log('Account modal closed', show, isOpen);
+    
+  // Force the modal to close with a slight delay to ensure state updates
+  // setTimeout(() => {
+    onOpenChange(false);
+    console.log('Modal should be closed now');
+    
+    // Reset the prevent reopen flag after a delay
+    setTimeout(() => {
+      setShouldPreventReopen(false);
+    }, 500);
+    // }, 10);
+    // console.log('Account modal closed', show, isOpen);
   };
 
 
@@ -108,10 +135,14 @@ export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ chil
       onOpenChange, 
       handleOpenModal, 
       handleCloseModal,
+      shouldPreventReopen,
+      setShouldPreventReopen,
       showExistingMemberLoadingScreen,
       setshowExistingMemberLoadingScreen,
       showNewMemberLoadingScreen,
       setShowNewMemberLoadingScreen,
+      isNewMember,
+      setIsNewMember,
       isWaitlisted,
       setIsWaitlisted,
       onClose

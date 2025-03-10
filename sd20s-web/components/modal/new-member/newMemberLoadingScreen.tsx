@@ -12,7 +12,7 @@ const NewMemberLoadingScreen = () => {
   useEffect(() => {
   setShow(false);
    const disableScroll = setTimeout(() => {
-     document.body.style.overflow = "hidden";
+    //  document.body.style.overflow = "hidden";
     }, 300);
     return () => {
       clearTimeout(disableScroll);
