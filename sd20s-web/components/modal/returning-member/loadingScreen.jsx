@@ -9,40 +9,47 @@ const LoadingScreen = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-   setLoading(true);
-   const disableScroll = setTimeout(() => {
     document.body.style.overflow = "hidden";
-  }, 300);
+    setLoading(true);
+  setTimeout(() => {
+    setLoading(false);
+  }
+  , 3000);
   return () => {
-    clearTimeout(disableScroll);
-  };
-  }, [disableScroll]);
+    document.body.style.overflow = "auto";
+    
+    }
+  }, []);
 
   return (
-    // <div className="fixed inset-0 flex justify-center items-center"> 
-      <div className="loading-screen" >
-      <AnimatePresence>
-        {loading && (
-          <motion.div
+    <AnimatePresence>
+      {loading && (
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="loading-screen"
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3,  ease: "easeInOut" }}
-            className="loading-screen-content"
-            >
-            <div className="flex flex-col -mt-20 items-center">
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="ml-28 mt-96 loading-screen-content justify-center"
+          >
+            <div className="flex flex-col -mt-20 items-center leading-none">
               <div>
-                <Image src={lockGif} alt="Loading" width={100} height={100} />
+                <Image src={lockGif} alt="Loading" width={141} height={123} />
               </div>
-            <div>
-              <p className="text-lg text-gray-700">Welcome Back...</p>
-            </div>
+              <div>
+                <p className="-mt-10 text-[26px] text-white">Welcome Back...</p>
+              </div>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  // </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

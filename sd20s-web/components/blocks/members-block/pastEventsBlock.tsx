@@ -74,13 +74,14 @@ const PastEventsBlock = () => {
           <h1>Past Events</h1>
       </div>
       <div>
+        {/* <div className=" h-[85px] w-[800px] bg-default-300 flex flex-col justify-center items-center"> */}
         {events.map((event, i) =>(
           <Card 
             key={i}
-            className="border-spacing-x-2 m-5 max-w-[314px] w-[314px] h-[79.61px] bg-default-300" 
+            className="m-5 max-w-[314px] w-[314px] h-[79.61px] bg-default-300" 
             >
             <div className="-z-20 -translate-x-30 justify-center items-center h-[10px] opacity-[0.5]">
-              <Image className="h-[55px] w-[800px]" src={PastEvent1} alt={`event-${i}`}  />
+              <Image className="h-[55px] w-[800px] object-cover" src={PastEvent1} alt={`event-${i}`}  />
             </div>
             <Spacer y={3} />
             <div className="flex flex-row">
@@ -94,8 +95,8 @@ const PastEventsBlock = () => {
               </div>
               <Spacer y={5} />
             </div>
-            <div className="-translate-x-5 -translate-y-5 w-[314px] h-[15.61px]">
-              <button onClick={() => handlePastEvent(i)} type="button" className="bg-[#D9D9D9] text-black rounded-md px-4 py-2 w-[314px] h-[15.61px] m-5 ">
+            <div className="-translate-x-5 -translate-y-5 w-[314px] h-[17px]">
+              <button onClick={() => handlePastEvent(i)} type="button" className="bg-[#D9D9D9] text-black rounded-md px-4 py-2 w-[314px] h-[16px] m-5">
                 <div className="-translate-y-3 text-[15px]">
                   <span> View Event Page </span>
                 </div>
@@ -103,6 +104,7 @@ const PastEventsBlock = () => {
             </div>
           </Card>
         ))}
+        {/* </div> */}
       </div>
       <PaginationFeature />
     </div>
