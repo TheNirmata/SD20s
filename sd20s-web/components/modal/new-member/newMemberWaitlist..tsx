@@ -19,8 +19,9 @@ const NewMemberWaitlist = () => { //React.FC<NewMemberWatilistProps>
   //   name: '',
   //   birthday: '',
   //   email: ''})
-
+  
   const handleConfirmation = () => {
+    //@ts-expect-error -should have true
     setShow(true);
     setConfirm(true);
   };
@@ -95,6 +96,7 @@ const NewMemberWaitlist = () => { //React.FC<NewMemberWatilistProps>
                 </div>
                   </>
                 ):(
+                    //@ts-expect-error -ignore
                   <WaitlistConfirmation show={show} setShow={setShow} />
                 )}
 

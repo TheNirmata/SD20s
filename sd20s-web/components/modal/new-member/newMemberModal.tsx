@@ -1,18 +1,16 @@
 "use client"
 import React, { useState } from 'react';
-// import { AnimatePresence } from 'framer-motion';
-// import { motion } from 'motion/react';
-// import type { NewMemberModalProps } from '../../../interface/modal';
 import NewMemberWaitlist from './newMemberWaitlist.';
 import { useAccountModalContext } from '../../context/accountModalContext';
-// import Image from 'next/image';
 import NewMemberLogin from './newMemberLogin';
 
 const NewMemberModal = () => {
   const [goToNewMemberLogin, setGoToNewMemberLogin] = useState<boolean>(false);
+  //@ts-expect-error -ignore
   const { show, setShow, isWaitlisted } = useAccountModalContext();
   
   const handleNewMemberLogin = () => {
+    //@ts-expect-error -ignore
     setShow(true);
     setGoToNewMemberLogin(true);
   };

@@ -3,11 +3,15 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
-    "../sd20s-web/components/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
-    "../sd20s-web/public/**/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
-    "../sd20s-web/*.{js,ts,jsx,tsx,mdx,png,svg,jpg}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "../sd20s-web/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "../sd20s-web/*.{js,ts,jsx,tsx,mdx}",
   ],
+  corePlugins: {
+    preflight: true,
+    //Make sure utilities are enabld
+    
+  },
   theme: {
     extend: {
       colors: {

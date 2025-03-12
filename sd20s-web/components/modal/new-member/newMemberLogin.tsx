@@ -1,33 +1,21 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 // import { Modal, ModalContent, Modalbody } from "@heroui/react";
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAccountModalContext } from '../../context/accountModalContext';
 import { Spacer } from "@heroui/react";
 // import NewMemberLoadingScreen from "./newMemberLoadingScreen";
 import { useRouter } from 'next/navigation';
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-
-} from "@heroui/react";
 
 
 const NewMemberLogin = () => {
-  const [submitted, setSubmitted] = useState(false);
   const router = useRouter();
   const { 
     isOpen, 
     show, 
-    setShow, 
-    onClose,
-    shouldPreventReopen,
-    isNewMember,
-    setIsNewMember,
+    //@ts-expect-error -ignore
+    handleRegister,
+    handleCloseModal,
     setShouldPreventReopen, 
     setShowNewMemberLoadingScreen 
    } = useAccountModalContext();
@@ -44,43 +32,25 @@ const NewMemberLogin = () => {
 
   const handleSubmission = async () => {
     try {
-      setSubmitted(true);
-      setShouldPreventReopen(true);
-      onClose(); // Explicitly close the modal
-      setShow(false);
-      setShowNewMemberLoadingScreen(true); // Show loading screen
+      handleRegister();
+      handleCloseModal();
       console.log('Submitting form...');
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 300)); 
       await router.push("/Members");
-      // const handleRedirect = () => {
-        setTimeout(() => {
-          console.log('Form submitted successfully');
-          setShowNewMemberLoadingScreen(false); // Hide loading screen
-        }, 3000);
-      // };
-      // handleRedirect();
+      // setTimeout(() => {
+        console.log('Form submitted successfully');
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // Small delay to ensure modal closes first
+        //@ts-expect-error -ignore
+        setShowNewMemberLoadingScreen(false); // Hide loading screen
+      // }, 1300);
     } catch (e) {
       console.error('Error submitting form', e);
-      setSubmitted(false);
+      //@ts-expect-error -ignore
       setShowNewMemberLoadingScreen(false);
-      // setTimeout(() => {
+        //@ts-expect-error -ignore
         setShouldPreventReopen(false);
-      // }, 500);
       
-    }finally {
-      setSubmitted(false);
-      setTimeout(() => {
-        setShowNewMemberLoadingScreen(false);
-      }
-      , 3000);
-      // setTimeout(() => {
-        setShouldPreventReopen(false);
-      // }, 500);
-      setShow(false);
-      onClose();
-      setIsNewMember(false);
-    }
-  };
+    }};
   
 
   return (

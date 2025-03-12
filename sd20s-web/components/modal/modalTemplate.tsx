@@ -1,3 +1,4 @@
+
 "use client"
 import React, { useEffect, ReactNode } from 'react';
 // import ModalTemplateProps from '../../interface/modal';
@@ -9,7 +10,6 @@ import { useAccountModalContext } from '../context/accountModalContext';
 // import ReactNode from 'react';
 
 import {
-  Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
@@ -19,7 +19,7 @@ import {
 } from "@heroui/react";
 
 //props are coming from Account component
-const ModalTemplate = ({ children }: ReactNode) => {
+const ModalTemplate = ({ children }: { children: ReactNode }) => {
   const { show, isOpen, handleCloseModal } = useAccountModalContext();
 
   useEffect(() => {

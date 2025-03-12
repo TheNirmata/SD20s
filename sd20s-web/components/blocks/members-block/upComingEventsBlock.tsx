@@ -10,20 +10,20 @@ import {Spacer, Card} from "@heroui/react";
 const UpComingEventsBlock = () => {
   const events = [{
     name: "event Name", 
-    when: "Monday, Janurary 1, 2025",
-    where: "Location A",
+    when: `When: 01/01/2025`,
+    where: `Where: Location A`,
     image: "temp"
     },
     {
       name: "event Name", 
-      when: "Friday, Janurary 2, 2025",
-      where: "Location B",
+      when: `When: 02/01/2025`,
+      where: `Where: Location B`,
       image: "../../../public/static-images/members-images/event1.png"
     },
     {
       name: "event Name", 
-      when: "Sunday, Janurary 3, 2025",
-      where: "Location C",
+      when: `When: 03/01/2025`,
+      where: `Where: Location C`,
       image: "../../../public/static-images/members-images/event1.png"
     },
   ];
@@ -57,10 +57,11 @@ const UpComingEventsBlock = () => {
                             <div>
                             <h1 className="text-[32px]">{event.name}</h1>
                             </div>
-                            <div className="mb-5">
+                            <div className="mb-5 leading-none">
                             <h3>{event.when}</h3>
                             <h3>{event.where}</h3>   
-                            </div>                    
+                            </div>                   
+                            <Spacer y={2} /> 
                           </div>
                         <div className="mt-[-2.5rem] mb-2">
                           <button className="bg-white border-white rounded-md text-black w-[314px] h-[15.7px] m-5 -translate-x-5">

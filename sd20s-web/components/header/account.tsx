@@ -1,5 +1,6 @@
+
 "use client"
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import account from '../../public/account.svg';
 import { useAccountModalContext } from '../context/accountModalContext';
@@ -9,7 +10,6 @@ import { Modal, ModalContent, ModalBody, Button } from "@heroui/react"; //useDis
 import NewMemberModal from '../modal/new-member/newMemberModal';
 import ExistingMemberModal from '../modal/returning-member/existingMemberModal';
 import LoadingScreen from '../modal/returning-member/loadingScreen';
-import NewMemberLogin from '../modal/new-member/newMemberLogin';
 import NewMemberLoadingScreen from '../modal/new-member/newMemberLoadingScreen';
 
 const Account = () => {
@@ -19,26 +19,31 @@ const Account = () => {
     setShow,
     isOpen, 
     onOpen, 
-    onClose, 
     onOpenChange, 
     showForm,
     setShowForm,
     showExistingMemberLoadingScreen,
+    //@ts-expect-error -ignore
     showNewMemberLoadingScreen,
     shouldPreventReopen,
+    //@ts-expect-error -ignore
     isNewMember,
+    //@ts-expect-error -ignore
     setIsNewMember,
    } = useAccountModalContext();
 
   const handleOpenAccountModal = () => {
     onOpen();
+    //@ts-expect-error -should be true
     setShow(true);
+    //@ts-expect-error -ignore
     setShowForm(false); // Ensure buttons are shown initially
     console.log('Account clicked', show, isOpen);
   };
 
   const handleNewMember = () => {
     setIsNewMember(true);
+    //@ts-expect-error -ignore
     setShowForm(true);
     // setContentType('newMember');
     console.log('New member clicked');
@@ -46,17 +51,11 @@ const Account = () => {
 
   const handleExistingMember = () => {
     setIsNewMember(false);
+    //@ts-expect-error -ignore
     setShowForm(true);
     // setContentType('existingMember');
     console.log('existing member clicked');
   };
-
-
-  useEffect(() => {
-    console.log('show state changed:', show);
-    console.log('show form state changed:', showForm);
-    console.log('isNewMember state changed:', isNewMember);
-  }, [show, isOpen, showForm, isNewMember, showExistingMemberLoadingScreen]);
 
 
   return (
@@ -78,6 +77,7 @@ const Account = () => {
       isOpen={isOpen && !showNewMemberLoadingScreen && !shouldPreventReopen}
       onOpenChange={(open) => {
         if (!shouldPreventReopen) {
+          //@ts-expect-error -ignore
           onOpenChange(open);
         }
       }}

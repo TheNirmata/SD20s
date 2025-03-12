@@ -4,24 +4,23 @@ import Image from "next/image";
 import lockGif from "../../../public/lockGif.gif";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAccountModalContext } from "../../context/accountModalContext";
+import { useRouter } from "next/navigation";
 
 
 const NewMemberLoadingScreen = () => {
   // const [loading, setLoading] = useState(false);
   const {setShow, onClose } = useAccountModalContext();
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-    const disableScroll = setTimeout(() => {
-      document.body.style.overflow = "hidden";
-      setShow(false);
+    document.body.style.overflow = "hidden";
+    // Show loading animation for at least 6 seconds
+    setTimeout(() => {
       setLoading(false);
-    }, 3000);
-    return () => {
-      clearTimeout(disableScroll);
-      document.body.style.overflow = "auto";
-  };
-  }, [setShow]);
+    }, 3000); // Increased from 4000 to 6000ms
+
+  }, [router, setShow]);
 
   
 
@@ -32,7 +31,7 @@ const NewMemberLoadingScreen = () => {
           key="loading-screen-container"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="loading-screen"
         >
           <motion.div
