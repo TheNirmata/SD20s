@@ -8,7 +8,7 @@ import { Spacer } from "@heroui/spacer";
 const SongRequestBlock = () => {
   return (
     <>
-    <div className="flex flex-col">
+    <div className="flex flex-col justify-center items-center">
       <div className="flex flex-row">
         <div className="justify-start items-start ">
           <Image src={direction} alt="Direction" width={159} height={82} />
@@ -18,7 +18,7 @@ const SongRequestBlock = () => {
         </div>
       </div>
       <Spacer y={12} />
-      <div className="justify-center items-center translate-x-6">
+      <div className="justify-center items-center">
         <Image src={songBlockPlaceholder} alt="Song Block Placeholder" width={335} height={430} />
       </div>
     </div>

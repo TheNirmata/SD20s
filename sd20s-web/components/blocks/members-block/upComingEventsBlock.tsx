@@ -9,73 +9,70 @@ import {Spacer, Card} from "@heroui/react";
 
 const UpComingEventsBlock = () => {
   const events = [{
-    name: "event 1", 
-    when: "Monday, Janurary 1, 2025",
-    where: "Location A",
+    name: "event Name", 
+    when: `When: 01/01/2025`,
+    where: `Where: Location A`,
     image: "temp"
     },
     {
-      name: "event 2", 
-      when: "Friday, Janurary 2, 2025",
-      where: "Location B",
+      name: "event Name", 
+      when: `When: 02/01/2025`,
+      where: `Where: Location B`,
       image: "../../../public/static-images/members-images/event1.png"
     },
     {
-      name: "event 3", 
-      when: "Sunday, Janurary 3, 2025",
-      where: "Location C",
+      name: "event Name", 
+      when: `When: 03/01/2025`,
+      where: `Where: Location C`,
       image: "../../../public/static-images/members-images/event1.png"
     },
   ];
   return (
     <div className="flex flex-col items-center justify-center text-[#D9D9D9]">
       <div className="flex flex-row">
-        <div className="uppercase text-[48px] leading-tight translate-x-10 translate-y-10">
+        <div className="uppercase text-[48px] leading-tight translate-x-10 translate-y-16">
           <h1 className="leading-none">{`Up Coming \n Events`}</h1>
         </div>
       <div className="-translate-y-20">
         <Image src={Dawn} alt="Dawn" width={125} height={125} />
       </div>
       </div>
-      <div className="-translate-y-20 flex flex-row">
+      {/* //////////////////////////////////////////////////////////////////////////////////////////////////// */}
+      <div className="flex flex-row -translate-y-8">
           <div className="translate-x-5">
-            <Image src={line} alt="line" width={1} height={50} />
+            <Image src={line} alt="line" height={555}/>
           </div>
-            <div className="flex flex-col">
-            {events.map((event, i) =>(
-                  <Card 
-                    className="translate-x-10 border-grey "
-                    key={i}
-                    style={{ backgroundImage: `url(${event.image})` }}
-                    >
-                    <>
-                      <div className="w-[100px] h-[50px] overflow-hidden -z-20">
-                        <Image src={event1} alt="event" 
-                          width={280} 
-                          height={50} 
-                          className="h-[55px] w-[280px]"  />
-                      </div>
-                        <div className={`-translate-y-5 flex flex-row h-24 rounded-lg bg-default-300 uppercase`}>
-                          <div className="text-[24px]">
-                          <h1>{event.name}</h1>
-                          </div>
-                          <Spacer x={16} />
-                          <div className="text-left">
-                          <h3>{event.when}</h3>
-                          <h3>{event.where}</h3>
-                          </div>
+              <div className="space-y-4">
+              {events.map((event, i) =>(
+                  <Card className="translate-x-10 border-grey mb-0" key={i}>
+                      <div className="flex flex-col ">
+                        <div className="relative w-full h-[80px] opacity-[0.5]">
+                          <Image 
+                            src={event1} 
+                            alt="event" 
+                            className="h-[55px] w-[314px] object-cover" 
+                            />
                         </div>
-                      <div className="-translate-y-10 -translate-x-5">
-                        <button className="bg-white border-white rounded-md text-black w-[280px] h-[15.7px] -translate-y-10 m-5">
-                          <p className="uppercase text-[12px] justify-center">Tickets</p>
-                        </button>
-                        </div>
-                  </>
-                  </Card>
-            ))}
-            </div>
+                          <div className="flex flex-col items-start rounded-lg bg-default-300 uppercase relative mt-[-40px] z-10">
+                            <div>
+                            <h1 className="text-[32px]">{event.name}</h1>
+                            </div>
+                            <div className="mb-5 leading-none">
+                            <h3>{event.when}</h3>
+                            <h3>{event.where}</h3>   
+                            </div>                   
+                            <Spacer y={2} /> 
+                          </div>
+                        <div className="mt-[-2.5rem] mb-2">
+                          <button className="bg-white border-white rounded-md text-black w-[314px] h-[15.7px] m-5 -translate-x-5">
+                            <p className="uppercase text-[12px] justify-center">Tickets</p>
+                          </button>
+                          </div>
+                    </div>
+                </Card>
+              ))}
+        </div>
       </div>
-
     </div>
   );
 };

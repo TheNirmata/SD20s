@@ -7,9 +7,18 @@ import { Spacer } from "@heroui/react";
 // import NewMemberLoadingScreen from "./newMemberLoadingScreen";
 import { useRouter } from 'next/navigation';
 
+
 const NewMemberLogin = () => {
   const router = useRouter();
-  const { isOpen, show, setShow, setShowNewMemberLoadingScreen, onClose } = useAccountModalContext();
+  const { 
+    isOpen, 
+    show, 
+    //@ts-expect-error -ignore
+    handleRegister,
+    handleCloseModal,
+    setShouldPreventReopen, 
+    setShowNewMemberLoadingScreen 
+   } = useAccountModalContext();
   // const [loading, setShowNewMemberLoadingScreen] = useState(false);
 
   useEffect(()=>{
@@ -23,39 +32,40 @@ const NewMemberLogin = () => {
 
   const handleSubmission = async () => {
     try {
-      onClose(); // Explicitly close the modal
-      setShow(false);
-      setShowNewMemberLoadingScreen(true); // Show loading screen
+      handleRegister();
+      handleCloseModal();
       console.log('Submitting form...');
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 300)); 
       await router.push("/Members");
-      const handleRedirect = () => {
-        setTimeout(() => {
-          console.log('Form submitted successfully');
-          setShowNewMemberLoadingScreen(false); // Hide loading screen
-        }, 3000);
-      };
-      handleRedirect();
+      // setTimeout(() => {
+        console.log('Form submitted successfully');
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // Small delay to ensure modal closes first
+        //@ts-expect-error -ignore
+        setShowNewMemberLoadingScreen(false); // Hide loading screen
+      // }, 1300);
     } catch (e) {
       console.error('Error submitting form', e);
+      //@ts-expect-error -ignore
       setShowNewMemberLoadingScreen(false);
-    }
-  };
+        //@ts-expect-error -ignore
+        setShouldPreventReopen(false);
+      
+    }};
   
 
   return (
     <>
-    {/* {loading && !show && <NewMemberLoadingScreen />} */}
     <AnimatePresence>
-    <motion.div
-        key="waitlist"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
-        className="h-full p-5"
-    >
-      {isOpen && show && ( 
+      {/* {(!isNewMember) && ( */}
+            <motion.div
+            key="waitlist"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.3 }}
+            className="h-full p-5"
+        >
+          {isOpen && show  && ( 
             <>
             <div className='h-auto mt-3'>
               <div className='pt-7 -translate-x-2 flex flex-col justify-cetner items-center text-[18px] text-center uppercase'>
@@ -89,8 +99,9 @@ const NewMemberLogin = () => {
             </div>
             </div>
               </>      
-             )}
-       </motion.div>
+              )}
+           </motion.div>
+      {/* )} */}
        </AnimatePresence>
        <Spacer y={20} />
     </>
