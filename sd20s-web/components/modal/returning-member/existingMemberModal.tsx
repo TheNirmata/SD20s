@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 
 const ExistingMemberModal = () => {
   const { 
+    setAuthenticated, 
     isOpen, 
     show, 
     setShow,
@@ -38,10 +39,11 @@ const ExistingMemberModal = () => {
         //@ts-expect-error -ignore
         setTimeout(() => setshowExistingMemberLoadingScreen(false), 3000);
       };
-  
       handleChangeComplete();
       console.log("Form submitted successfully");
       // setshowExistingMemberLoadingScreen(false); // Hide the loading screen
+      //@ts-expect-error -ignore
+      setAuthenticated(true);
     } catch(e) {
       console.error("Error submitting form", e);
       //@ts-expect-error -ignore

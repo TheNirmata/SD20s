@@ -6,19 +6,29 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-server": "tsc -p tsconfig.server.json",
+    "server": "nodemon --watch src/server --ext ts --exec \"npm run build-server && node dist/src/server/server.js\""
   },
   "dependencies": {
+    "@heroui/divider": "^2.2.11",
     "@heroui/dropdown": "^2.3.10",
     "@heroui/react": "^2.6.14",
     "@heroui/spacer": "^2.2.10",
     "@jridgewell/gen-mapping": "^0.3.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "framer-motion": "^12.4.7",
     "motion": "^12.4.7",
     "next": "^15.2.1",
+    "nodemon": "^3.1.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-image-crop": "^11.0.7"
+    "react-image-crop": "^11.0.7",
+    "tsc": "^2.0.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -33,6 +43,6 @@
     "eslint-config-next": "15.1.6",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "typescript": "^5.8.2"
   }
 }

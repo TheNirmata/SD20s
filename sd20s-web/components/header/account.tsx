@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ModalTemplate from '../modal/modalTemplate';
 import { Modal, ModalContent, ModalBody, Button } from "@heroui/react"; //useDisclosure
 import NewMemberModal from '../modal/new-member/newMemberModal';
+import MemberModal from '../modal/returning-member/memberModal';
 import ExistingMemberModal from '../modal/returning-member/existingMemberModal';
 import LoadingScreen from '../modal/returning-member/loadingScreen';
 import NewMemberLoadingScreen from '../modal/new-member/newMemberLoadingScreen';
@@ -15,6 +16,14 @@ import NewMemberLoadingScreen from '../modal/new-member/newMemberLoadingScreen';
 const Account = () => {
   // const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const {
+    // handleOpenModal,
+    // handleCloseModal,
+
+    //@ts-expect-error -ignore
+    handleExistingMember,
+    //@ts-expect-error -ignore
+    handleMemberModal,
+    authenticated,
     show, 
     setShow,
     isOpen, 
@@ -26,36 +35,36 @@ const Account = () => {
     //@ts-expect-error -ignore
     showNewMemberLoadingScreen,
     shouldPreventReopen,
-    //@ts-expect-error -ignore
     isNewMember,
-    //@ts-expect-error -ignore
-    setIsNewMember,
    } = useAccountModalContext();
 
   const handleOpenAccountModal = () => {
-    onOpen();
-    //@ts-expect-error -should be true
-    setShow(true);
-    //@ts-expect-error -ignore
-    setShowForm(false); // Ensure buttons are shown initially
-    console.log('Account clicked', show, isOpen);
+    if (authenticated) {
+      handleMemberModal();
+    }else{
+      onOpen();
+      //@ts-expect-error -should be true
+      setShow(true);
+      //@ts-expect-error -ignore
+      setShowForm(false); // Ensure buttons are shown initially
+      console.log('Account clicked', show, isOpen);
+    }
   };
 
   const handleNewMember = () => {
-    setIsNewMember(true);
     //@ts-expect-error -ignore
     setShowForm(true);
     // setContentType('newMember');
     console.log('New member clicked');
   };
 
-  const handleExistingMember = () => {
-    setIsNewMember(false);
-    //@ts-expect-error -ignore
-    setShowForm(true);
-    // setContentType('existingMember');
-    console.log('existing member clicked');
-  };
+  // const handleExistingMember = () => {
+  //   console.log('is user authenticated = ', authenticated);
+  //   setIsNewMember(false);
+  //   //@ts-expect-error -ignore
+  //   setShowForm(true);
+  //   console.log('existing member clicked');
+  // };
 
 
   return (
@@ -134,8 +143,15 @@ const Account = () => {
         </ModalBody>
       </ModalContent>
     </Modal>
-     {showExistingMemberLoadingScreen && <LoadingScreen />}
-     {showNewMemberLoadingScreen && <NewMemberLoadingScreen />}
+    {isNewMember && showNewMemberLoadingScreen && (
+      <NewMemberLoadingScreen />
+    )}
+    {showExistingMemberLoadingScreen && (
+      <LoadingScreen />
+    )}
+    {authenticated && !isNewMember &&  (
+      <MemberModal />
+    )}
   </>
   );
 };

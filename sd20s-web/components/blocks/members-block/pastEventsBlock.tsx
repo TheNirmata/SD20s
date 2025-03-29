@@ -56,14 +56,7 @@ const PastEventsBlock = () => {
     if (!foundEventPastEvent) {
       console.log('Event not found');
     }else{
-      // router.push(`/Members/pastEvents/${encodeURIComponent(foundEventPastEvent?.id)}-${encodeURIComponent(foundEventPastEvent?.name)}`);
-      // const foundPage =
       redirect(`/Members/pastEvents/${encodeURIComponent(foundEventPastEvent?.id)}-${encodeURIComponent(foundEventPastEvent?.name)}`);
-      //   if (foundPage) {
-      //     console.log('Found Page');
-      //   } else {
-      //     console.log('Page not found');
-      // }
     }
   };
 
