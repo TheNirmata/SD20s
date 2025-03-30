@@ -7,6 +7,9 @@ import PastEventsBlock from '../../../components/blocks/members-block/pastEvents
 import ContactUsBlock from '../../../components/blocks/members-block/MemberContactUsBlock';
 
 const MembersPage = () => {
+  // useEffect(()=> {
+  //   const isAuth = localStorage.get
+  // },[]);
   return (
     <>
     <div className="flex flex-col items-center min-h-screen overflow-x-hidden">

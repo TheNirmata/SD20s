@@ -5,9 +5,14 @@ import { useDisclosure } from "@heroui/react";
 
 
 const AccountModalContext = createContext({
+  authenticated: false,
+  setAuthenticated: () => {},
+  isNewMember: false,
+  setIsNewMember: () => {},
   show: false,
-  
   setShow: () => {},
+  showMemberModal: false,
+  setShowMemberModal: () => {},
   isOpen: false,
   onOpen: () => {},
   onClose: () => {},
@@ -36,12 +41,15 @@ export const useAccountModalContext = () => useContext(AccountModalContext);
 export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ children }) => {
   const [show, setShow] = useState(false);
   const [showForm, setShowForm] = useState(false);
-    const [isNewMember, setIsNewMember] = useState(false);
+  const [isNewMember, setIsNewMember] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
   const { isOpen, onOpen,  onClose, onOpenChange } = useDisclosure();
   const [showExistingMemberLoadingScreen, setshowExistingMemberLoadingScreen] = useState(false);
   const [showNewMemberLoadingScreen, setShowNewMemberLoadingScreen] = useState(false);
   const [isWaitlisted, setIsWaitlisted] = useState<boolean>(false);
   const [shouldPreventReopen, setShouldPreventReopen] = useState(false);
+  const [showMemberModal, setShowMemberModal] = useState(false);
+
   const eventCapacity = 100;
   const currentCountOfAttendees = 0;
 
@@ -82,41 +90,80 @@ export const AccountModalProvider: React.FC<AccountModalProviderProps> = ({ chil
     }, 500);
   };
 
+  const handleExistingMember = () => {
+    setIsNewMember(false);
+    setShowForm(true);
+    //check if user exists 
+    // if (userExists) {
+    //   setShowExistingMemberLoadingScreen(false);
+    // } else {
+    //   setShowExistingMemberLoadingScreen(true);
+    // }
+    console.log('existing member clicked');
+    // setAuthenticated(true);
+  };
+
+  
+  
   const handleRegister = () => {
     if (currentCountOfAttendees > eventCapacity) {
       setIsWaitlisted(true);
+      setIsNewMember(true);
       console.log(`event is full, you are now on the waitlist`);
     } else {
+      // setShowNewMemberLoadingScreen(true);
+      setIsNewMember(false);
+      setAuthenticated(true);
       console.log(`event is not full, you are now registered`);
     }
   };
+  
+  const handleMemberModal = () => {
+    if (authenticated) {
+      setShowMemberModal(prev => !prev);
+      console.log('Member modal toggled');
+    }else{
+      onOpen();
+    }
+  };
+  ;
 
   return (
     <AccountModalContext.Provider value={{ 
+      authenticated,
+      //@ts-expect-error -ignore
+      setAuthenticated,
       show, 
       //@ts-expect-error -ignore
       setShow, 
       showForm, 
       //@ts-expect-error -ignore
       setShowForm, 
+      showMemberModal,
+      //@ts-expect-error -ignore
+      showForm, 
+      //@ts-expect-error -ignore
+      setShowMemberModal,
+      isNewMember,
+      //@ts-expect-error -ignore
+      setIsNewMember,
       isOpen, 
       onOpen, 
       onOpenChange, 
       handleOpenModal, 
       handleCloseModal,
+      handleExistingMember,
       handleRegister,
+      handleMemberModal,
       shouldPreventReopen,
       //@ts-expect-error -ignore
       setShouldPreventReopen,
       showExistingMemberLoadingScreen,
       //@ts-expect-error -ignore
       setshowExistingMemberLoadingScreen,
-      //@ts-expect-error -need this ehre 
       showNewMemberLoadingScreen,
       //@ts-expect-error -ignore
       setShowNewMemberLoadingScreen,
-      isNewMember,
-      setIsNewMember,
       isWaitlisted,
       //@ts-expect-error -ignore
       setIsWaitlisted,

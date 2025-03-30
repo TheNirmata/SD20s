@@ -1,10 +1,8 @@
 "use client"
 import React, { useEffect } from 'react';
-// import { Modal, ModalContent, Modalbody } from "@heroui/react";
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAccountModalContext } from '../../context/accountModalContext';
 import { Spacer } from "@heroui/react";
-// import NewMemberLoadingScreen from "./newMemberLoadingScreen";
 import { useRouter } from 'next/navigation';
 
 
@@ -13,6 +11,7 @@ const NewMemberLogin = () => {
   const { 
     isOpen, 
     show, 
+    setIsNewMember,
     //@ts-expect-error -ignore
     handleRegister,
     handleCloseModal,
@@ -32,6 +31,8 @@ const NewMemberLogin = () => {
 
   const handleSubmission = async () => {
     try {
+      //@ts-expect-error -ignore
+      setIsNewMember(false);
       handleRegister();
       handleCloseModal();
       console.log('Submitting form...');

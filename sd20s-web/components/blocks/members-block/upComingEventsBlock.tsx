@@ -1,32 +1,59 @@
 "use client"
-// import react from 'react';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Dawn from "../../../public/static-images/members-images/dawn.png"
 import line from "../../../public/line.png";
 import event1 from "../../../public/static-images/events-images/event1.png";
 import {Spacer, Card} from "@heroui/react";
+import { redirect} from "next/navigation";
 
 
-const UpComingEventsBlock = () => {
-  const events = [{
+const events = [{
+  id: 1,
+  name: "event Name", 
+  when: `When: 01/01/2025`,
+  where: `Where: Location A`,
+  image: "temp"
+  },
+  {
+    id: 2,
     name: "event Name", 
-    when: `When: 01/01/2025`,
-    where: `Where: Location A`,
-    image: "temp"
-    },
-    {
-      name: "event Name", 
-      when: `When: 02/01/2025`,
-      where: `Where: Location B`,
-      image: "../../../public/static-images/members-images/event1.png"
-    },
-    {
-      name: "event Name", 
-      when: `When: 03/01/2025`,
-      where: `Where: Location C`,
-      image: "../../../public/static-images/members-images/event1.png"
-    },
-  ];
+    when: `When: 02/01/2025`,
+    where: `Where: Location B`,
+    image: "../../../public/static-images/members-images/event1.png"
+  },
+  {
+    id: 3,
+    name: "event Name", 
+    when: `When: 03/01/2025`,
+    where: `Where: Location C`,
+    image: "../../../public/static-images/members-images/event1.png"
+  },
+];
+const UpComingEventsBlock = () => {
+  const [eventsList, setEventsList] = useState(events);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setEventsList(events);
+    }, 5000);
+    return () => clearInterval(interval);
+  }
+  , [eventsList]);
+  
+
+  const handleEvent = (eventId: number) => {
+    const foundEvent = events.find((event) => event.id === eventId);
+    const currentEventId = foundEvent?.id ? foundEvent.id : 1;
+    console.log(`Found ${foundEvent?.name}`);
+    if (!foundEvent) {
+      console.log('Event not found');
+    }else{
+      redirect(`/Members/upComingEvents/${encodeURIComponent(currentEventId)}-${encodeURIComponent(foundEvent?.name)}`);
+    }
+  } ;
+
+
   return (
     <div className="flex flex-col items-center justify-center text-[#D9D9D9]">
       <div className="flex flex-row">
@@ -44,6 +71,7 @@ const UpComingEventsBlock = () => {
           </div>
               <div className="space-y-4">
               {events.map((event, i) =>(
+                <>
                   <Card className="translate-x-10 border-grey mb-0" key={i}>
                       <div className="flex flex-col ">
                         <div className="relative w-full h-[80px] opacity-[0.5]">
@@ -63,13 +91,17 @@ const UpComingEventsBlock = () => {
                             </div>                   
                             <Spacer y={2} /> 
                           </div>
-                        <div className="mt-[-2.5rem] mb-2">
-                          <button className="bg-white border-white rounded-md text-black w-[314px] h-[15.7px] m-5 -translate-x-5">
-                            <p className="uppercase text-[12px] justify-center">Tickets</p>
-                          </button>
-                          </div>
                     </div>
                 </Card>
+              <div className="mt-[-2.5rem] mb-2">
+                <button 
+                  key={i}
+                  onClick={() => handleEvent(event.id)}
+                  className="bg-white border-white rounded-md text-black w-[314px] h-[15.7px] m-5 translate-x-5 -translate-y-12">
+                  <p className="uppercase text-[12px] justify-center">Tickets</p>
+                </button>
+                </div>
+                </>
               ))}
         </div>
       </div>
