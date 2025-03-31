@@ -1,6 +1,6 @@
 
 "use client"
-import React from 'react';
+import React,{useEffect} from 'react';
 import Image from 'next/image';
 import account from '../../public/account.svg';
 import { useAccountModalContext } from '../context/accountModalContext';
@@ -12,9 +12,10 @@ import MemberModal from '../modal/returning-member/memberModal';
 import ExistingMemberModal from '../modal/returning-member/existingMemberModal';
 import LoadingScreen from '../modal/returning-member/loadingScreen';
 import NewMemberLoadingScreen from '../modal/new-member/newMemberLoadingScreen';
+// import { useMemberAccountModalContext } from '../context/member-account-context';
+import UserAccountModal from '../modal/account-modal/user-account-modal';
 
 const Account = () => {
-  // const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const {
     // handleOpenModal,
     // handleCloseModal,
@@ -76,11 +77,15 @@ const Account = () => {
         className='max-w-[32px] max-h-[32px]'
       />
     </Button>
-    <Modal
+   {!isNewMember ? (
+    <UserAccountModal isOpen={isOpen}  onOpenChange={onOpenChange}/>
+   ): (
+    <>
+     <Modal
       backdrop="opaque"
       classNames={{
         backdrop: "bg-black",
-        base: "modal-container",
+        base: " h-[300px] w-[298px] event-modal",
         closeButton: "hidden"
       }}
       isOpen={isOpen && !showNewMemberLoadingScreen && !shouldPreventReopen}
@@ -152,6 +157,8 @@ const Account = () => {
     {authenticated && !isNewMember &&  (
       <MemberModal />
     )}
+    </>
+   )}
   </>
   );
 };

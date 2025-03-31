@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { Event } from "../../../types/event-type";
+import EventModal from "../../modal/event-modal/event-modal";
 import Image from "next/image";
 import divider from "../../../public/static-images/events-images/event-page/divider.png";
-import { Card, Spacer } from "@heroui/react";
+import { Card, Spacer, useDisclosure, Button } from "@heroui/react";
 import performerIcon from "../../../public/static-images/events-images/event-page/performer-icon.png";
 import rightArrowIcon from "../../../public/static-images/events-images/event-page/right-arrow-icon.png";
 import locationPingIcon from "../../../public/static-images/events-images/event-page/location-ping-icon.png"; 
@@ -15,13 +16,23 @@ export const EventInfo = ({ eventId }: { eventId: number}) => { //eventId
   const { data: eventData, error, loading } = useFetch(`http://localhost:8000/events/${eventId}`);
   const { data: performersData } = useFetch(`http://localhost:8000/performers`);
   const {data: guestListData} = useFetch(`http://localhost:8000/guest-list`); // Assuming you have a guestlist endpoint
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const [event, setEvent] = useState<Event | null>(null);
-  const [performersList, setPerformersList] = useState<any[] | null>(null);
-  const [guestListArray, setGuestListArray] = useState<any[] | null>(null);
+  const [performersList, setPerformersList] = useState<object[] | null>(null);
+  const [guestListArray, setGuestListArray] = useState<object[] | null>(null);
+  const [showEventModal, setShowEventModal] = useState(false);
 
 
     const maxDisplayGuestArray = (guestListArray && guestListArray.length > 0 && guestListArray.length <= 8) ? guestListArray : guestListArray?.slice(0, 8) || [];
-    console.log(`maxDisplayGuestArray length: ${maxDisplayGuestArray.length}`);
+    // console.log(`maxDisplayGuestArray length: ${maxDisplayGuestArray.length}`);
+
+
+    const handleEventModal = (eventId: number) => {
+      onOpen(); // Open the modal
+      setShowEventModal(!showEventModal); // Set showEventModal to true
+      EventModal({ eventId, onClose, isOpen, onOpenChange }); // Call the EventModal function with eventId and onClose
+    };
+    
 
 
   useEffect(() => {
@@ -30,10 +41,10 @@ export const EventInfo = ({ eventId }: { eventId: number}) => { //eventId
         setEvent(eventData as Event);
       }
       if (performersData) {
-        setPerformersList(performersData as any[]);
+        setPerformersList(performersData as object[]);
       }
       if (guestListData) {
-        setGuestListArray(guestListData as any[]);
+        setGuestListArray(guestListData as object[]);
       }
     })();
   },[eventId, eventData, performersData, guestListData]);
@@ -65,7 +76,24 @@ export const EventInfo = ({ eventId }: { eventId: number}) => { //eventId
       </div>
     </div>
       <div>
-        <button className="m-10 bg-white rounded-md text-black text-[24px] h-[41.78px] w-[308px]">Get Ticekts</button>
+        <Button onPress={() => {
+          setShowEventModal(true);
+          onOpen();
+        }} 
+        className="m-10 bg-white rounded-md text-black text-[24px] h-[41.78px] w-[308px]">Get Ticekts</Button>
+        {showEventModal && (
+            <EventModal 
+            eventId={event.id} 
+            onClose={() => {
+              setTimeout(()=>{
+                setShowEventModal(!showEventModal);
+                onClose(); 
+              }, 300);
+            }} 
+            isOpen={isOpen} 
+            onOpenChange={onOpenChange}
+          />
+        )}
       </div>
   
       <div className="mt-10 text-[#D9D9D9E5] text-[16px] flex flex-col items-center justify-center"> 
@@ -86,14 +114,14 @@ export const EventInfo = ({ eventId }: { eventId: number}) => { //eventId
       )  : (
         <p>No performers listed.</p>
       )}
-
-      <Spacer size={4} />
+      {/* //@ts-expect-error -heroUI library for spacer */}
+      <Spacer y={5} />
 
       <div className="flex items-start justify-start w-full">
         <p className="text-left">Guestlist: </p>
       </div>
       <div>
-        {guestListArray.length <= 8 ? (
+        {guestListArray && guestListArray.length <= 8 ? (
           <div className="flex flex-row">
           {maxDisplayGuestArray.map((guest) => (
             <div key={guest.id} className="flex items-center justify-center">
