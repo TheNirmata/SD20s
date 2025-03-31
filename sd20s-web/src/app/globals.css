@@ -119,6 +119,14 @@ body {
   text-align: center;
   z-index: 2000; /* Higher z-index than modal-overlay and header */
 }
+
+.event-modal { 
+  position: realative;
+  top: -75px;
+  width: 351px;
+  height: 527px;
+
+}
 .active{
   opacity: 1;
   visibility: visible;

@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@heroui/divider": "^2.2.11",
-    "@heroui/dropdown": "^2.3.10",
+    "@heroui/dropdown": "^2.3.16",
+    "@heroui/number-input": "^2.0.6",
     "@heroui/react": "^2.6.14",
     "@heroui/spacer": "^2.2.10",
     "@jridgewell/gen-mapping": "^0.3.5",
