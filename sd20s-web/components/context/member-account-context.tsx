@@ -5,6 +5,8 @@ const MemberAccountModalContext = createContext({
   setShowAccountModal: (showAccountModal: boolean) => {},
   isNewMember: false,
   setIsNewMember: (isNew: boolean) => {},
+  isLoggedIn: false, 
+  setIsLoggedIn: (isLoggedIn: boolean) => {}
 });
 
 interface MemberAccountModalProviderProps {
@@ -15,13 +17,15 @@ export const useMemberAccountModalContext = () => useContext(MemberAccountModalC
 export const MemberAccountModalProvider: React.FC<MemberAccountModalProviderProps> = ({ children }) => {
   const [showAccountModal, setShowAccountModal] = useState(false);
   const [isNewMember, setIsNewMember] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     // Check if the modal should be shown based on local storage
     if(isNewMember === false) {
       setShowAccountModal(true);
+      isLoggedIn(true);
     }
-  }, [isNewMember]);
+  }, [isNewMember, isLoggedIn]);
 
 
   return (
@@ -30,7 +34,9 @@ export const MemberAccountModalProvider: React.FC<MemberAccountModalProviderProp
         showAccountModal,
         setShowAccountModal,
         isNewMember,
-        setIsNewMember
+        setIsNewMember,
+        isLoggedIn,
+        setIsLoggedIn
       }}
     >
       {children}

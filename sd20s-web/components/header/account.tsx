@@ -85,7 +85,7 @@ const Account = () => {
       backdrop="opaque"
       classNames={{
         backdrop: "bg-black",
-        base: "modal-container",
+        base: " h-[300px] w-[298px] event-modal",
         closeButton: "hidden"
       }}
       isOpen={isOpen && !showNewMemberLoadingScreen && !shouldPreventReopen}

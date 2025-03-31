@@ -125,7 +125,7 @@ body {
   top: -75px;
   width: 351px;
   height: 527px;
-
+  border: 2px solid #606060;
 }
 .active{
   opacity: 1;
